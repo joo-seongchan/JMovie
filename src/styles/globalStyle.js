@@ -8,7 +8,7 @@ export const mainStyle = {
     sub: "rgba(255,255,255,0.7)",
     p: "rgba(255,255,255,0.5)",
   },
-  pointColor: { 1: "#DC143C", 2: "#16C5B1" },
+  pointColor: { red: "#DC143C", green: "#16C5B1" },
   padding: "0 100px",
 };
 
