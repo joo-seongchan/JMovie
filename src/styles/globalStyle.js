@@ -8,7 +8,7 @@ export const mainStyle = {
     sub: "rgba(255,255,255,0.7)",
     p: "rgba(255,255,255,0.5)",
   },
-  mainColor: "#DC143C",
+  pointColor: { 1: "#DC143C", 2: "#16C5B1" },
   padding: "0 100px",
 };
 
@@ -22,6 +22,7 @@ body{
     color:${mainStyle.color.main};
     letter-spacing: -1px;
     word-break: keep-all;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 a{
     text-decoration: none;
