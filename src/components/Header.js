@@ -10,7 +10,7 @@ const SHeader = styled.div`
   height: 80px;
   background-color: rgba(0, 0, 0, 0.5);
   padding: ${mainStyle.padding};
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 `;
@@ -45,9 +45,6 @@ const Icon = styled.div`
 `;
 
 export const Header = () => {
-  const on = `color : ${mainStyle.pointColor.red}, fontWeight : 500 `;
-  const down = `color : ${mainStyle.color.sub}, fontWeight : 300 `;
-
   const [homecolor, setHomecolor] = useState(`${mainStyle.pointColor.red}`);
   const [moviecolor, setMoviecolor] = useState(`${mainStyle.color.sub}`);
   const [tvcolor, setTvcolor] = useState(`${mainStyle.color.sub}`);

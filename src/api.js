@@ -8,5 +8,11 @@ const api = axios.create({
   },
 });
 
-export const movieApi = {};
-export const tvApi = {};
+export const movieApi = {
+  mLatest: () => api.get("movie/latest"),
+  mPopular: () => api.get("movie/popular"),
+};
+export const tvApi = {
+  tLatest: () => api.get("tv/latest"),
+  tPopular: () => api.get("tv/popular"),
+};
