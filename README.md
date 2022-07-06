@@ -4,9 +4,9 @@
 
 ## Global
 
-- [ ] Package install
-- [ ] Router setuP
-- [ ] Create Components
+- [x] Package install
+- [x] Router setuP
+- [x] Create Components
 - [ ] Helmet
 - [ ] Get Api
 - [ ] Header Responsive
