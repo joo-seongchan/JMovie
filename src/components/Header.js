@@ -45,79 +45,71 @@ const Icon = styled.div`
 `;
 
 export const Header = () => {
-  const [homecolor, setHomecolor] = useState(`${mainStyle.pointColor.red}`);
-  const [moviecolor, setMoviecolor] = useState(`${mainStyle.color.sub}`);
-  const [tvcolor, setTvcolor] = useState(`${mainStyle.color.sub}`);
-  const [searchcolor, setSearchcolor] = useState(`${mainStyle.color.sub}`);
-  const [upcommingcolor, setUpcommingcolor] = useState(
-    `${mainStyle.color.sub}`
-  );
+  // const [homecolor, setHomecolor] = useState(`${mainStyle.pointColor.red}`);
+  // const [moviecolor, setMoviecolor] = useState(`${mainStyle.color.sub}`);
+  // const [tvcolor, setTvcolor] = useState(`${mainStyle.color.sub}`);
+  // const [searchcolor, setSearchcolor] = useState(`${mainStyle.color.sub}`);
+  // const [upcommingcolor, setUpcommingcolor] = useState(
+  //   `${mainStyle.color.sub}`
+  // );
 
-  const homeClick = () => {
-    setHomecolor(`${mainStyle.pointColor.red}`);
-    setMoviecolor(`${mainStyle.color.sub}`);
-    setTvcolor(`${mainStyle.color.sub}`);
-    setSearchcolor(`${mainStyle.color.sub}`);
-    setUpcommingcolor(`${mainStyle.color.sub}`);
-  };
-  const movieClick = () => {
-    setHomecolor(`${mainStyle.color.sub}`);
-    setMoviecolor(`${mainStyle.pointColor.red}`);
-    setTvcolor(`${mainStyle.color.sub}`);
-    setSearchcolor(`${mainStyle.color.sub}`);
-    setUpcommingcolor(`${mainStyle.color.sub}`);
-  };
-  const tvClick = () => {
-    setHomecolor(`${mainStyle.color.sub}`);
-    setMoviecolor(`${mainStyle.color.sub}`);
-    setTvcolor(`${mainStyle.pointColor.red}`);
-    setSearchcolor(`${mainStyle.color.sub}`);
-    setUpcommingcolor(`${mainStyle.color.sub}`);
-  };
-  const searchClick = () => {
-    setHomecolor(`${mainStyle.color.sub}`);
-    setMoviecolor(`${mainStyle.color.sub}`);
-    setTvcolor(`${mainStyle.color.sub}`);
-    setSearchcolor(`${mainStyle.pointColor.red}`);
-    setUpcommingcolor(`${mainStyle.color.sub}`);
-  };
-  const upcommingClick = () => {
-    setHomecolor(`${mainStyle.color.sub}`);
-    setMoviecolor(`${mainStyle.color.sub}`);
-    setTvcolor(`${mainStyle.color.sub}`);
-    setSearchcolor(`${mainStyle.color.sub}`);
-    setUpcommingcolor(`${mainStyle.pointColor.red}`);
-  };
+  // const homeClick = () => {
+  //   setHomecolor(`${mainStyle.pointColor.red}`);
+  //   setMoviecolor(`${mainStyle.color.sub}`);
+  //   setTvcolor(`${mainStyle.color.sub}`);
+  //   setSearchcolor(`${mainStyle.color.sub}`);
+  //   setUpcommingcolor(`${mainStyle.color.sub}`);
+  // };
+  // const movieClick = () => {
+  //   setHomecolor(`${mainStyle.color.sub}`);
+  //   setMoviecolor(`${mainStyle.pointColor.red}`);
+  //   setTvcolor(`${mainStyle.color.sub}`);
+  //   setSearchcolor(`${mainStyle.color.sub}`);
+  //   setUpcommingcolor(`${mainStyle.color.sub}`);
+  // };
+  // const tvClick = () => {
+  //   setHomecolor(`${mainStyle.color.sub}`);
+  //   setMoviecolor(`${mainStyle.color.sub}`);
+  //   setTvcolor(`${mainStyle.pointColor.red}`);
+  //   setSearchcolor(`${mainStyle.color.sub}`);
+  //   setUpcommingcolor(`${mainStyle.color.sub}`);
+  // };
+  // const searchClick = () => {
+  //   setHomecolor(`${mainStyle.color.sub}`);
+  //   setMoviecolor(`${mainStyle.color.sub}`);
+  //   setTvcolor(`${mainStyle.color.sub}`);
+  //   setSearchcolor(`${mainStyle.pointColor.red}`);
+  //   setUpcommingcolor(`${mainStyle.color.sub}`);
+  // };
+  // const upcommingClick = () => {
+  //   setHomecolor(`${mainStyle.color.sub}`);
+  //   setMoviecolor(`${mainStyle.color.sub}`);
+  //   setTvcolor(`${mainStyle.color.sub}`);
+  //   setSearchcolor(`${mainStyle.color.sub}`);
+  //   setUpcommingcolor(`${mainStyle.pointColor.red}`);
+  // };
   return (
     <SHeader>
       <Wrap>
-        <Logo onClick={homeClick}>
+        <Logo>
           <Link to={"/"}>J Movie</Link>
         </Logo>
         <MenuWrap>
-          <Menu onClick={homeClick}>
-            <Link style={{ color: `${homecolor}` }} to={"/"}>
-              Home
-            </Link>
+          <Menu>
+            <Link to={"/"}>Home</Link>
           </Menu>
-          <Menu onClick={movieClick}>
-            <Link style={{ color: `${moviecolor}` }} to={"/detailMovie"}>
-              Movies
-            </Link>
+          <Menu>
+            <Link to={"/detailMovie"}>Movies</Link>
           </Menu>
-          <Menu onClick={tvClick}>
-            <Link style={{ color: `${tvcolor}` }} to={"/detailTv"}>
-              TV Shows
-            </Link>
+          <Menu>
+            <Link to={"/detailTv"}>TV Shows</Link>
           </Menu>
-          <Menu onClick={upcommingClick}>
-            <Link style={{ color: `${upcommingcolor}` }} to={"/search"}>
-              Up Comming
-            </Link>
+          <Menu>
+            <Link to={"/search"}>Up Comming</Link>
           </Menu>
         </MenuWrap>
-        <Icon onClick={searchClick}>
-          <Link style={{ color: `${searchcolor}` }} to={"/search"}>
+        <Icon>
+          <Link to={"/search"}>
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </Link>
         </Icon>

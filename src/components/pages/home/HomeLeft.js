@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { imgUrl } from "../../../constants/constant";
 
@@ -5,9 +6,12 @@ const Wrap = styled.div`
   width: 60vw;
   height: 100vh;
   display: flex;
+  a {
+    width: 50%;
+  }
 
   img {
-    width: 50%;
+    width: 100%;
     height: 100%;
   }
 `;
@@ -15,8 +19,12 @@ const Wrap = styled.div`
 export const HomeLeft = ({ img1, img2 }) => {
   return (
     <Wrap>
-      <img src={`${imgUrl}${img1}`} />
-      <img src={`${imgUrl}${img2}`} />
+      <Link to="#">
+        <img src={`${imgUrl}${img1}`} />
+      </Link>
+      <Link to="#">
+        <img src={`${imgUrl}${img2}`} />
+      </Link>
     </Wrap>
   );
 };
