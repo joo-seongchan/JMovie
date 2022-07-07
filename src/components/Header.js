@@ -1,6 +1,6 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mainStyle } from "../styles/globalStyle";
@@ -105,7 +105,7 @@ export const Header = () => {
             <Link to={"/detailTv"}>TV Shows</Link>
           </Menu>
           <Menu>
-            <Link to={"/search"}>Up Comming</Link>
+            <Link to={"/upComming"}>Up Comming</Link>
           </Menu>
         </MenuWrap>
         <Icon>

@@ -52,8 +52,6 @@ const MainBox = styled.div`
   }
 `;
 
-const Bg = styled.div``;
-
 const SubMenuWrap = styled.div`
   width: 100%;
   height: 25%;
@@ -135,7 +133,6 @@ export const HomeRight = ({ img1, img2 }) => {
                 더 보기 <FontAwesomeIcon icon={faArrowRight} />
               </span>
             </Link>
-            <Bg />
           </MainBox>
           <MainBox>
             <Link to="/detailTv">

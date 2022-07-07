@@ -8,6 +8,7 @@ import { NotFound } from "./components/pages/NotFound";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { GlobalStyle } from "./styles/globalStyle";
+import { UpComming } from "./components/pages/upComming/UpComming";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/detailMovie" element={<DetailMovie />}></Route>
           <Route path="/detailTv" element={<DetailTv />}></Route>
+          <Route path="/upComming" element={<UpComming />}></Route>
           <Route path="/search" element={<Search />}></Route>
           <Route path="/*" element={<NotFound />}></Route>
         </Routes>
