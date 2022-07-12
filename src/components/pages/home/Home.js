@@ -41,10 +41,7 @@ export const Home = () => {
         <>
           {moviedata && (
             <Container>
-              <HomeLeft
-                img1={moviedata[1].poster_path}
-                img2={moviedata[2].poster_path}
-              />
+              <HomeLeft img1={moviedata[1]} img2={moviedata[2]} />
               <HomeRight
                 img1={tvdata[2].poster_path}
                 img2={tvdata[7].poster_path}

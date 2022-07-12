@@ -8,7 +8,7 @@ import { mainStyle } from "../styles/globalStyle";
 const SHeader = styled.div`
   width: 100%;
   height: 80px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.3);
   padding: ${mainStyle.padding};
   position: fixed;
   top: 0;
@@ -39,10 +39,19 @@ const Menu = styled.li`
   }
   a {
     font-size: 20px;
+    &:hover {
+      color: ${mainStyle.pointColor.red};
+      font-weight: 700;
+    }
   }
 `;
 const Icon = styled.div`
   font-size: 24px;
+  a {
+    &:hover {
+      color: ${mainStyle.pointColor.red};
+    }
+  }
 `;
 
 export const Header = () => {

@@ -50,10 +50,28 @@ const Title = styled.div`
   letter-spacing: 2px;
   line-height: 70px;
 `;
+const PointWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  width: 200px;
+`;
+
+const Point = styled.div`
+  font-size: 20px;
+`;
+
+const StarBox = styled.div`
+  width: 114px;
+  overflow: hidden;
+  transform: translateX(-${(props) => (10 - props.point) * 11.4}px);
+`;
+
 const StarWrap = styled.div`
   font-size: 20px;
   color: yellow;
-  margin-top: 20px;
+  transform: translateX(${(props) => (10 - props.point) * 11.4}px);
 `;
 const Genres = styled.div`
   font-size: 20px;
@@ -109,7 +127,7 @@ const MenuBox = styled.ul`
   justify-content: space-between;
   padding: 10px;
   width: 500px;
-  /* margin-right: 100px; */
+  margin-right: 100px;
 `;
 const Menu = styled.li`
   font-size: 24px;
@@ -123,7 +141,6 @@ const Menu = styled.li`
 const MWrap = styled.div`
   width: 100%;
   height: 400px;
-  /* margin-top: px; */
   overflow: hidden;
 `;
 const Mlist = styled.div`
@@ -150,13 +167,12 @@ const MTitle = styled.div`
   text-align: center;
 `;
 
-export const DetailBg = ({ db, db2, db3 }) => {
+export const MDetailBg = ({ db, db2, db3 }) => {
   const [detailDb, setDetailDb] = useState();
   const [loading, setLoading] = useState(true);
   const [menu, setMenu] = useState("0px");
-  const [bgId, setBgid] = useState("438148");
+  const [bgId, setBgid] = useState("168259");
 
-  console.log(bgId);
   const params = {
     breakpoints: {
       320: {
@@ -183,13 +199,6 @@ export const DetailBg = ({ db, db2, db3 }) => {
     movieDetail();
   }, []);
 
-  // const handleClick = async () => {
-  //   setBgid(453395);
-  //   const { data: a } = await movieApi.mDetail(453395);
-  //   console.log(a);
-  // };
-  // console.log(detailDb);
-
   return (
     <>
       {loading ? (
@@ -205,13 +214,18 @@ export const DetailBg = ({ db, db2, db3 }) => {
               <ConWrap1>
                 <LeftCon>
                   <Title>{detailDb.title}</Title>
-                  <StarWrap>
-                    <FontAwesomeIcon icon={faStar} />
-                    <FontAwesomeIcon icon={faStar} />
-                    <FontAwesomeIcon icon={faStar} />
-                    <FontAwesomeIcon icon={faStar} />
-                    <FontAwesomeIcon icon={faStar} />
-                  </StarWrap>
+                  <PointWrap>
+                    <StarBox point={detailDb.vote_average}>
+                      <StarWrap point={detailDb.vote_average}>
+                        <FontAwesomeIcon icon={faStar} />
+                        <FontAwesomeIcon icon={faStar} />
+                        <FontAwesomeIcon icon={faStar} />
+                        <FontAwesomeIcon icon={faStar} />
+                        <FontAwesomeIcon icon={faStar} />
+                      </StarWrap>
+                    </StarBox>
+                    <Point>{detailDb.vote_average} 점</Point>
+                  </PointWrap>
                   <Genres>
                     {detailDb.genres.map((genre) => (
                       <span key={genre.id}>{genre.name} | </span>

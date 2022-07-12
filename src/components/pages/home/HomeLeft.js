@@ -19,11 +19,11 @@ const Wrap = styled.div`
 export const HomeLeft = ({ img1, img2 }) => {
   return (
     <Wrap>
-      <Link to="#">
-        <img src={`${imgUrl}${img1}`} />
+      <Link to={`msubpage/${img1.id}`}>
+        <img src={`${imgUrl}${img1.poster_path}`} />
       </Link>
-      <Link to="#">
-        <img src={`${imgUrl}${img2}`} />
+      <Link to={`msubpage/${img2.id}`}>
+        <img src={`${imgUrl}${img2.poster_path}`} />
       </Link>
     </Wrap>
   );

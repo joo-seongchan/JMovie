@@ -1,4 +1,4 @@
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -146,25 +146,31 @@ export const HomeRight = ({ img1, img2 }) => {
         </MainMenuWrap>
 
         <SubMenuWrap>
-          <Link to="#">
+          <Link to="/detailMovie">
             <SubMenu>인기영화</SubMenu>
           </Link>
-          <Link to="#">
+          <Link to="detailMovie">
             <SubMenu>최신영화</SubMenu>
           </Link>
-          <Link to="#">
+          <Link to="/detailTv">
             <SubMenu>인기방송</SubMenu>
           </Link>
-          <Link to="#">
+          <Link to="/detailTv">
             <SubMenu>최신방송</SubMenu>
           </Link>
         </SubMenuWrap>
         <TitleMenuWrap>
-          <Link to="#">
+          <Link to="/upComming">
             <TitleMenu>개봉예정영화</TitleMenu>
           </Link>
-          <Link to="#">
-            <TitleMenu>인기시리즈</TitleMenu>
+          <Link to="/search">
+            <TitleMenu>
+              <FontAwesomeIcon
+                style={{ marginRight: "20px" }}
+                icon={faSearch}
+              />
+              검색
+            </TitleMenu>
           </Link>
         </TitleMenuWrap>
       </MenuWrap>

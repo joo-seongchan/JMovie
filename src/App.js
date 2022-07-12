@@ -9,6 +9,8 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { GlobalStyle } from "./styles/globalStyle";
 import { UpComming } from "./components/pages/upComming/UpComming";
+import { MSubPage } from "./components/pages/subPage/MSubPage";
+import { TSubPage } from "./components/pages/subPage/TSubPage";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="/detailTv" element={<DetailTv />}></Route>
           <Route path="/upComming" element={<UpComming />}></Route>
           <Route path="/search" element={<Search />}></Route>
+          <Route path="/msubpage/:id" element={<MSubPage />}></Route>
+          <Route path="/tsubpage/:id" element={<TSubPage />}></Route>
           <Route path="/*" element={<NotFound />}></Route>
         </Routes>
         <Footer />

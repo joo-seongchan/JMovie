@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { movieApi } from "../../../api";
 import { Loading } from "../../Loading";
-import { DetailBg } from "./DetailBg";
-import { DetailMlist } from "./DetailMlist";
+import { MDetailBg } from "./MDetailBg";
 
 export const DetailMovie = () => {
   const [mnow, setMnow] = useState();
@@ -34,6 +33,6 @@ export const DetailMovie = () => {
   }, []);
 
   return (
-    <>{loading ? <Loading /> : <DetailBg db={mnow} db2={mtop} db3={mpop} />}</>
+    <>{loading ? <Loading /> : <MDetailBg db={mnow} db2={mtop} db3={mpop} />}</>
   );
 };

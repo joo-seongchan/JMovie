@@ -61,11 +61,9 @@ const Wrap = styled.div`
   row-gap: 10px;
   margin-right: 10px;
   padding: 10px;
-  /* background-color: ${mainStyle.pointColor.red}; */
   &:nth-child(2) {
     margin-right: 0;
     margin-left: 10px;
-    /* background-color: ${mainStyle.pointColor.green}; */
   }
 `;
 
@@ -184,7 +182,7 @@ export const Search = () => {
                     <>
                       {msearchterm.map((term) => (
                         <Con key={term.id}>
-                          <Link to="#">
+                          <Link to={`/msubpage/${term.id}`}>
                             <Bg
                               style={{
                                 background: `url(${imgUrl}${term.poster_path}) no-repeat center/cover `,
@@ -208,7 +206,7 @@ export const Search = () => {
                     <>
                       {tsearchterm.map((term) => (
                         <Con key={term.id}>
-                          <Link to="#">
+                          <Link to={`/tsubpage/${term.id}`}>
                             <Bg
                               style={{
                                 background: `url(${imgUrl}${term.poster_path}) no-repeat center/cover `,
