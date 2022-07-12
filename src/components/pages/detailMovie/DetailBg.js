@@ -9,11 +9,11 @@ import { Loading } from "../../Loading";
 
 const Wrap = styled.div`
   width: 99vw;
-  height: 100vh;
+  height: 80vh;
 `;
 const Bg = styled.div`
   width: 100%;
-  height: 80%;
+  height: 100%;
 `;
 const ConWrap = styled.div`
   width: 100%;

@@ -28,4 +28,7 @@ a{
     text-decoration: none;
     color: white;
 }
+li{
+  text-decoration: none;
+}
 `;

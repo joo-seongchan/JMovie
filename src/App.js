@@ -3,7 +3,7 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "./components/pages/home/Home";
 import { DetailMovie } from "./components/pages/detailMovie/DetailMovie";
 import { DetailTv } from "./components/pages/detailTv/DetailTv";
-import { Search } from "./components/pages/search/Search";
+import { Search } from "./components/pages/search/search";
 import { NotFound } from "./components/pages/NotFound";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
