@@ -8,7 +8,7 @@ const Wrap = styled.div`
   justify-content: center;
   align-items: center;
   /* position: absolute;
-  bottom: 0;
+  bottom: -10vh;
   left: 0; */
   font-size: 18px;
 `;

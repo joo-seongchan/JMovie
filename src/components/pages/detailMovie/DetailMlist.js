@@ -11,7 +11,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  transform: translateY(-170px);
+  transform: translateY(-230px);
 `;
 const MenuBox = styled.ul`
   display: flex;
@@ -32,16 +32,27 @@ const Menu = styled.li`
 
 const MWrap = styled.div`
   width: 100%;
-  height: 300px;
+  height: 400px;
   margin-top: 20px;
   overflow: hidden;
 `;
 const Mlist = styled.div`
-  height: 300px;
+  height: 400px;
+`;
+const ConWrap = styled.div`
+  transition: 0.5s;
+  height: 350px;
+  cursor: pointer;
+  margin-top: 50px;
+  &:hover {
+    transform-origin: bottom;
+    height: 400px;
+    margin-top: 0;
+  }
 `;
 const MImg = styled.div`
-  width: 200px;
-  height: 250px;
+  width: 100%;
+  height: 80%;
 `;
 const MTitle = styled.div`
   margin-top: 10px;
@@ -51,6 +62,8 @@ const MTitle = styled.div`
 
 export const DetailMlist = ({ db, db2, db3 }) => {
   const [menu, setMenu] = useState("0px");
+  const [bgId, setBgid] = useState("");
+  console.log(bgId);
   const params = {
     breakpoints: {
       320: {
@@ -75,14 +88,14 @@ export const DetailMlist = ({ db, db2, db3 }) => {
         </Menu>
         <Menu
           onClick={() => {
-            setMenu("-300px");
+            setMenu("-400px");
           }}
         >
           인기영화
         </Menu>
         <Menu
           onClick={() => {
-            setMenu("-600px");
+            setMenu("-800px");
           }}
         >
           추천영화
@@ -93,12 +106,18 @@ export const DetailMlist = ({ db, db2, db3 }) => {
           <Swiper modules={[Navigation]} {...params}>
             {db.map((db) => (
               <SwiperSlide key={db.id}>
-                <MImg
-                  style={{
-                    background: `url(${imgUrl}${db.poster_path}) no-repeat center/cover`,
+                <ConWrap
+                  onClick={() => {
+                    setBgid(db.id);
                   }}
-                ></MImg>
-                <MTitle>{db.title}</MTitle>
+                >
+                  <MImg
+                    style={{
+                      background: `url(${imgUrl}${db.poster_path}) no-repeat center/cover`,
+                    }}
+                  ></MImg>
+                  <MTitle>{db.title}</MTitle>
+                </ConWrap>
               </SwiperSlide>
             ))}
           </Swiper>
@@ -108,12 +127,18 @@ export const DetailMlist = ({ db, db2, db3 }) => {
           <Swiper modules={[Navigation]} {...params}>
             {db2.map((db2) => (
               <SwiperSlide key={db2.id}>
-                <MImg
-                  style={{
-                    background: `url(${imgUrl}${db2.poster_path}) no-repeat center/cover`,
+                <ConWrap
+                  onClick={() => {
+                    setBgid(db2.id);
                   }}
-                ></MImg>
-                <MTitle>{db2.title}</MTitle>
+                >
+                  <MImg
+                    style={{
+                      background: `url(${imgUrl}${db2.poster_path}) no-repeat center/cover`,
+                    }}
+                  ></MImg>
+                  <MTitle>{db2.title}</MTitle>
+                </ConWrap>
               </SwiperSlide>
             ))}
           </Swiper>
@@ -122,12 +147,18 @@ export const DetailMlist = ({ db, db2, db3 }) => {
           <Swiper modules={[Navigation]} {...params}>
             {db3.map((db3) => (
               <SwiperSlide key={db3.id}>
-                <MImg
-                  style={{
-                    background: `url(${imgUrl}${db3.poster_path}) no-repeat center/cover`,
+                <ConWrap
+                  onClick={() => {
+                    setBgid(db3.id);
                   }}
-                ></MImg>
-                <MTitle>{db3.title}</MTitle>
+                >
+                  <MImg
+                    style={{
+                      background: `url(${imgUrl}${db3.poster_path}) no-repeat center/cover`,
+                    }}
+                  ></MImg>
+                  <MTitle>{db3.title}</MTitle>
+                </ConWrap>
               </SwiperSlide>
             ))}
           </Swiper>

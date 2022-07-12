@@ -32,17 +32,17 @@ export const DetailMovie = () => {
     };
     movieData();
   }, []);
-  console.log(mnow);
+
   return (
-    <div>
+    <>
       {loading ? (
         <Loading />
       ) : (
         <>
-          <DetailBg />
-          <DetailMlist db={mnow} db2={mtop} db3={mpop} />
+          <DetailBg db={mnow} db2={mtop} db3={mpop} />
+          {/* <DetailMlist /> */}
         </>
       )}
-    </div>
+    </>
   );
 };
