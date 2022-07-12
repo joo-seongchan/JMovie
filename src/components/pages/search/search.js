@@ -10,13 +10,14 @@ import { Loading } from "../../Loading";
 
 const Container = styled.div`
   padding: 0 100px;
+  min-height: 100vh;
 `;
 
 const Title = styled.div`
   font-size: 100px;
   color: ${mainStyle.pointColor.red};
   text-align: center;
-  margin-top: 150px;
+  padding-top: 150px;
 `;
 
 const Input = styled.input`
@@ -88,6 +89,9 @@ const ConTitle = styled.div`
   height: 40px;
   margin-top: 10px;
   text-align: center;
+`;
+const MError = styled.div`
+  font-size: 48px;
 `;
 
 export const Search = () => {
@@ -174,36 +178,48 @@ export const Search = () => {
             <Wrap>
               {msearchterm && (
                 <>
-                  {msearchterm.map((term) => (
-                    <Con key={term.id}>
-                      <Link to="#">
-                        <Bg
-                          style={{
-                            background: `url(${imgUrl}${term.poster_path}) no-repeat center/cover `,
-                          }}
-                        />
-                        <ConTitle>{term.title}</ConTitle>
-                      </Link>
-                    </Con>
-                  ))}
+                  {msearchterm.length <= 0 ? (
+                    <MError>검색된 영화가 없습니다.</MError>
+                  ) : (
+                    <>
+                      {msearchterm.map((term) => (
+                        <Con key={term.id}>
+                          <Link to="#">
+                            <Bg
+                              style={{
+                                background: `url(${imgUrl}${term.poster_path}) no-repeat center/cover `,
+                              }}
+                            />
+                            <ConTitle>{term.title}</ConTitle>
+                          </Link>
+                        </Con>
+                      ))}
+                    </>
+                  )}
                 </>
               )}
             </Wrap>
             <Wrap>
               {tsearchterm && (
                 <>
-                  {tsearchterm.map((term) => (
-                    <Con key={term.id}>
-                      <Link to="#">
-                        <Bg
-                          style={{
-                            background: `url(${imgUrl}${term.poster_path}) no-repeat center/cover `,
-                          }}
-                        />
-                        <ConTitle>{term.name}</ConTitle>
-                      </Link>
-                    </Con>
-                  ))}
+                  {tsearchterm.length <= 0 ? (
+                    <MError>검색 된 TV Show가 없습니다.</MError>
+                  ) : (
+                    <>
+                      {tsearchterm.map((term) => (
+                        <Con key={term.id}>
+                          <Link to="#">
+                            <Bg
+                              style={{
+                                background: `url(${imgUrl}${term.poster_path}) no-repeat center/cover `,
+                              }}
+                            />
+                            <ConTitle>{term.name}</ConTitle>
+                          </Link>
+                        </Con>
+                      ))}
+                    </>
+                  )}
                 </>
               )}
             </Wrap>

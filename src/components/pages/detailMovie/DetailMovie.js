@@ -34,15 +34,6 @@ export const DetailMovie = () => {
   }, []);
 
   return (
-    <>
-      {loading ? (
-        <Loading />
-      ) : (
-        <>
-          <DetailBg db={mnow} db2={mtop} db3={mpop} />
-          {/* <DetailMlist /> */}
-        </>
-      )}
-    </>
+    <>{loading ? <Loading /> : <DetailBg db={mnow} db2={mtop} db3={mpop} />}</>
   );
 };

@@ -84,7 +84,7 @@ const Trailer = styled.div`
 `;
 const RightCon = styled.div`
   max-width: 400px;
-  padding-top: 100px;
+  padding-top: 50px;
   letter-spacing: 0px;
   line-height: 24px;
   display: flex;
@@ -100,7 +100,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: flex-end;
   position: relative;
-  top: -280px;
+  top: -250px;
   left: 0;
 `;
 const MenuBox = styled.ul`
@@ -123,7 +123,7 @@ const Menu = styled.li`
 const MWrap = styled.div`
   width: 100%;
   height: 400px;
-  margin-top: 20px;
+  /* margin-top: px; */
   overflow: hidden;
 `;
 const Mlist = styled.div`
