@@ -15,6 +15,7 @@ export const movieApi = {
   mNowPlaying: () => api.get("movie/now_playing"),
   mUpComming: () => api.get("movie/upcoming"),
   mDetail: (id) => api.get(`movie/${id}`),
+  mVideo: (id) => api.get(`movie/${id}/videos`),
   search: (term) =>
     api.get("search/movie", {
       params: {
@@ -28,6 +29,7 @@ export const tvApi = {
   tTopRated: () => api.get("tv/top_rated"),
   tOnTheAir: () => api.get("tv/airing_today"),
   tDetail: (id) => api.get(`tv/${id}`),
+  tVideo: (id) => api.get(`tv/${id}/videos`),
   search: (term) =>
     api.get("search/tv", {
       params: {

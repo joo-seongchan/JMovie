@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { movieApi } from "../../../api";
 import { Loading } from "../../Loading";
-import { imgUrl } from "../../../constants/constant";
+import { imgUrl, videoUrl } from "../../../constants/constant";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faPlay, faStar, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { mainStyle } from "../../../styles/globalStyle";
 
 const Bg = styled.div`
@@ -41,6 +41,7 @@ const LeftCon = styled.div`
 `;
 const Title = styled.div`
   font-size: 70px;
+  min-height: 150px;
   max-height: 300px;
   display: flex;
   align-items: center;
@@ -66,7 +67,7 @@ const Point = styled.div`
 const Genres = styled.div`
   margin-top: 20px;
   span {
-    font-size: 28px;
+    font-size: 24px;
     color: ${mainStyle.color.sub};
     &::after {
       content: "|";
@@ -105,6 +106,7 @@ const Trailer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 const RightCon = styled.div`
@@ -121,9 +123,35 @@ const Text = styled.div`
   color: ${mainStyle.color.p};
   line-height: 30px;
 `;
+const Popup = styled.div`
+  width: 90vw;
+  height: 85vh;
+  position: fixed;
+  top: 120px;
+  left: 100px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+`;
+
+const Button = styled.div`
+  font-size: 32px;
+  width: 30px;
+  height: 30px;
+  background-color: black;
+  color: ${mainStyle.color.sub};
+  position: absolute;
+  top: -30px;
+  right: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 export const MSubPage = () => {
   const [detailDb, setDtaildb] = useState();
+  const [videosDb, setVideoDb] = useState();
+  const [popup, setPopup] = useState("none");
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
 
@@ -132,6 +160,10 @@ export const MSubPage = () => {
       try {
         const { data } = await movieApi.mDetail(id);
         setDtaildb(data);
+        const {
+          data: { results },
+        } = await movieApi.mVideo(id);
+        setVideoDb(results.length === 0 ? false : results[0].key);
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -139,8 +171,8 @@ export const MSubPage = () => {
     };
     detaildb();
   }, []);
-  console.log(detailDb);
-
+  // console.log(detailDb);
+  console.log(videosDb);
   return (
     <>
       {loading ? (
@@ -173,14 +205,20 @@ export const MSubPage = () => {
               </PointWrap>
               <Genres>
                 {detailDb.genres.map((db) => (
-                  <span>{db.name}</span>
+                  <span key={db.id}>{db.name}</span>
                 ))}
               </Genres>
               <BoxWrap>
                 <Play>
                   <FontAwesomeIcon icon={faPlay} />
                 </Play>
-                <Trailer>예고편</Trailer>
+                <Trailer
+                  onClick={() => {
+                    setPopup(`block`);
+                  }}
+                >
+                  예고편
+                </Trailer>
               </BoxWrap>
             </LeftCon>
             <RightCon>
@@ -188,6 +226,32 @@ export const MSubPage = () => {
               <Text>{detailDb.overview}</Text>
             </RightCon>
           </Section>
+          <Popup style={{ display: `${popup}` }}>
+            <Button
+              onClick={() => {
+                setPopup("none");
+              }}
+            >
+              <FontAwesomeIcon icon={faXmark} />
+            </Button>
+            {videosDb ? (
+              <iframe
+                width="100%"
+                height="100%"
+                src={`${videoUrl}${videosDb}`}
+                allowfullscreen
+              ></iframe>
+            ) : (
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  background:
+                    "url(https://cdn-icons-png.flaticon.com/512/5301/5301987.png) no-repeat center/contain",
+                }}
+              ></div>
+            )}
+          </Popup>
         </>
       )}
     </>

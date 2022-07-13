@@ -116,11 +116,11 @@ export const HomeRight = ({ img1, img2 }) => {
   return (
     <RightWrap>
       <TvImgWrap>
-        <Link to="#">
-          <img src={`${imgUrl}${img1}`} />
+        <Link to={`/tsubpage/${img1.id}`}>
+          <img src={`${imgUrl}${img1.poster_path}`} />
         </Link>
-        <Link to="#">
-          <img src={`${imgUrl}${img2}`} />
+        <Link to={`/tsubpage/${img2.id}`}>
+          <img src={`${imgUrl}${img2.poster_path}`} />
         </Link>
       </TvImgWrap>
       <MenuWrap>

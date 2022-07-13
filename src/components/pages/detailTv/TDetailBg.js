@@ -1,9 +1,9 @@
-import { faPlay, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faPlay, faStar, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { tvApi } from "../../../api";
-import { imgUrl } from "../../../constants/constant";
+import { imgUrl, videoUrl } from "../../../constants/constant";
 import { mainStyle } from "../../../styles/globalStyle";
 import { Loading } from "../../Loading";
 import { Navigation } from "swiper";
@@ -99,6 +99,7 @@ const Trailer = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 24px;
+  cursor: pointer;
 `;
 const RightCon = styled.div`
   max-width: 400px;
@@ -167,12 +168,38 @@ const MTitle = styled.div`
   font-size: 18px;
   text-align: center;
 `;
+const Popup = styled.div`
+  width: 90vw;
+  height: 85vh;
+  position: fixed;
+  top: 120px;
+  left: 100px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+`;
+
+const Button = styled.div`
+  font-size: 32px;
+  width: 30px;
+  height: 30px;
+  background-color: black;
+  color: ${mainStyle.color.sub};
+  position: absolute;
+  top: -30px;
+  right: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 export const TDetailBg = ({ db, db2, db3 }) => {
   const [detailDb, setDetailDb] = useState();
   const [loading, setLoading] = useState(true);
   const [menu, setMenu] = useState("0px");
   const [bgId, setBgid] = useState("70593");
+  const [videosDb, setVideoDb] = useState();
+  const [popup, setPopup] = useState("none");
 
   const params = {
     breakpoints: {
@@ -192,6 +219,10 @@ export const TDetailBg = ({ db, db2, db3 }) => {
       try {
         const { data } = await tvApi.tDetail(`${bgId}`);
         setDetailDb(data);
+        const {
+          data: { results },
+        } = await tvApi.tVideo(`${bgId}`);
+        setVideoDb(results.length === 0 ? false : results[0].key);
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -236,7 +267,13 @@ export const TDetailBg = ({ db, db2, db3 }) => {
                     <Play>
                       <FontAwesomeIcon icon={faPlay} />
                     </Play>
-                    <Trailer>예고편</Trailer>
+                    <Trailer
+                      onClick={() => {
+                        setPopup("block");
+                      }}
+                    >
+                      예고편
+                    </Trailer>
                   </PlayWrap>
                 </LeftCon>
                 <RightCon>
@@ -278,6 +315,10 @@ export const TDetailBg = ({ db, db2, db3 }) => {
                         onClick={async () => {
                           const { data: a } = await tvApi.tDetail(db.id);
                           setDetailDb(a);
+                          const {
+                            data: { results: b },
+                          } = await tvApi.tVideo(db.id);
+                          setVideoDb(b.length === 0 ? false : b[0].key);
                         }}
                       >
                         <MImg
@@ -300,6 +341,10 @@ export const TDetailBg = ({ db, db2, db3 }) => {
                         onClick={async () => {
                           const { data: a } = await tvApi.tDetail(db2.id);
                           setDetailDb(a);
+                          const {
+                            data: { results: b },
+                          } = await tvApi.tVideo(db2.id);
+                          setVideoDb(b.length === 0 ? false : b[0].key);
                         }}
                       >
                         <MImg
@@ -321,6 +366,10 @@ export const TDetailBg = ({ db, db2, db3 }) => {
                         onClick={async () => {
                           const { data: a } = await tvApi.tDetail(db3.id);
                           setDetailDb(a);
+                          const {
+                            data: { results: b },
+                          } = await tvApi.tVideo(db3.id);
+                          setVideoDb(b.length === 0 ? false : b[0].key);
                         }}
                       >
                         <MImg
@@ -336,6 +385,32 @@ export const TDetailBg = ({ db, db2, db3 }) => {
               </Mlist>
             </MWrap>
           </Container>
+          <Popup style={{ display: `${popup}` }}>
+            <Button
+              onClick={() => {
+                setPopup("none");
+              }}
+            >
+              <FontAwesomeIcon icon={faXmark} />
+            </Button>
+            {videosDb ? (
+              <iframe
+                width="100%"
+                height="100%"
+                src={`${videoUrl}${videosDb}`}
+                allowfullscreen
+              ></iframe>
+            ) : (
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  background:
+                    "url(https://cdn-icons-png.flaticon.com/512/5301/5301987.png) no-repeat center/contain",
+                }}
+              ></div>
+            )}
+          </Popup>
         </Section>
       )}
     </>

@@ -8,14 +8,14 @@
 - [x] Router setuP
 - [x] Create Components
 - [ ] Helmet
-- [ ] Get Api
+- [x] Get Api
 - [ ] Header Responsive
 - [ ] Main Container Responsive
 
 ## Main page
 
-- [ ] Use Effect
-- [ ] try catch
+- [x] Use Effect
+- [x] try catch
 - [ ] Loading
 - [ ] Slide
 - [ ] Slide Link
