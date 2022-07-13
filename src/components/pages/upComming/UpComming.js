@@ -15,6 +15,9 @@ const Title = styled.div`
   letter-spacing: 5px;
   margin-top: 100px;
   color: ${mainStyle.pointColor.red};
+  @media screen and (max-width: 500px) {
+    font-size: 50px;
+  }
 `;
 const Container = styled.div`
   padding: 100px;
@@ -22,9 +25,17 @@ const Container = styled.div`
   grid-template-columns: repeat(4, 1fr);
   column-gap: 20px;
   row-gap: 20px;
+  @media screen and (max-width: 500px) {
+    padding: ${mainStyle.mopadding};
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 50px;
+  }
 `;
 const ConWrap = styled.div`
   height: 600px;
+  @media screen and (max-width: 500px) {
+    height: 300px;
+  }
 `;
 const Img = styled.div`
   height: 90%;
@@ -33,6 +44,10 @@ const ConTitle = styled.div`
   font-size: 24px;
   margin-top: 20px;
   text-align: center;
+  @media screen and (max-width: 500px) {
+    font-size: 16px;
+    margin-top: 10px;
+  }
 `;
 
 export const UpComming = () => {

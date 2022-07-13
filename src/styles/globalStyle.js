@@ -10,6 +10,7 @@ export const mainStyle = {
   },
   pointColor: { red: "#DC143C", green: "#16C5B1" },
   padding: "0 100px",
+  mopadding: "0 20px",
 };
 
 export const GlobalStyle = createGlobalStyle`

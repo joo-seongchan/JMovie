@@ -13,6 +13,9 @@ import { PageTitle } from "../../PageTitle";
 const Container = styled.div`
   padding: 0 100px;
   min-height: 100vh;
+  @media screen and (max-width: 500px) {
+    padding: ${mainStyle.mopadding};
+  }
 `;
 
 const Title = styled.div`
@@ -20,6 +23,9 @@ const Title = styled.div`
   color: ${mainStyle.pointColor.red};
   text-align: center;
   padding-top: 150px;
+  @media screen and (max-width: 500px) {
+    font-size: 50px;
+  }
 `;
 
 const Input = styled.input`
@@ -34,11 +40,17 @@ const Input = styled.input`
   &::placeholder {
     font-size: 22px;
   }
+  @media screen and (max-width: 500px) {
+    margin: 50px 0;
+  }
 `;
 const TitleWrap = styled.div`
   width: 100%;
   display: flex;
   margin-bottom: 20px;
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
 `;
 const MainTitle = styled.div`
   width: 50%;
@@ -53,6 +65,9 @@ const MainTitle = styled.div`
 const Section = styled.section`
   display: flex;
   margin-bottom: 100px;
+  @media screen and (max-width: 500px) {
+    display: block;
+  }
 `;
 
 const Wrap = styled.div`
@@ -66,6 +81,10 @@ const Wrap = styled.div`
   &:nth-child(2) {
     margin-right: 0;
     margin-left: 10px;
+  }
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    grid-template-columns: 1fr;
   }
 `;
 

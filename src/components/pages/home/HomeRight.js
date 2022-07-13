@@ -9,6 +9,10 @@ const RightWrap = styled.div`
   width: 40vw;
   min-width: 400px;
   height: 100vh;
+  @media screen and (max-width: 500px) {
+    width: 100vw;
+    min-width: 0px;
+  }
 `;
 
 const TvImgWrap = styled.div`
@@ -50,6 +54,9 @@ const MainBox = styled.div`
     font-size: 24px;
     margin-top: 10px;
   }
+  @media screen and (max-width: 500px) {
+    font-size: 32px;
+  }
 `;
 
 const SubMenuWrap = styled.div`
@@ -84,6 +91,9 @@ const SubMenu = styled.div`
   border: 5px solid ${mainStyle.bgColor};
   flex-direction: column;
   font-size: 20px;
+  @media screen and (max-width: 500px) {
+    font-size: 18px;
+  }
 `;
 
 const TitleMenuWrap = styled.div`

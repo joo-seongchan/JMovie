@@ -1,4 +1,8 @@
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faClose,
+  faMagnifyingGlass,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
@@ -14,6 +18,9 @@ const SHeader = styled.div`
   top: 0;
   left: 0;
   z-index: 9999;
+  @media screen and (max-width: 500px) {
+    padding: ${mainStyle.mopadding};
+  }
 `;
 const Wrap = styled.div`
   width: 100%;
@@ -31,6 +38,9 @@ const Logo = styled.h1`
 `;
 const MenuWrap = styled.ul`
   display: flex;
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
 `;
 const Menu = styled.li`
   margin-left: 100px;
@@ -52,52 +62,58 @@ const Icon = styled.div`
       color: ${mainStyle.pointColor.red};
     }
   }
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
+`;
+
+const MoMenuWrap = styled.div`
+  display: none;
+  @media screen and (max-width: 1000px) {
+    display: block;
+  }
+`;
+
+const MOIcon = styled.div`
+  font-size: 28px;
+`;
+
+const MoMenus = styled.ul`
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+`;
+
+const MoCloseIcon = styled.div`
+  font-size: 28px;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+`;
+
+const MoMenu = styled.li`
+  width: 90%;
+  height: 20%;
+  font-size: 32px;
+  border: 1px solid ${mainStyle.pointColor.red};
+  a {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const Header = () => {
-  // const [homecolor, setHomecolor] = useState(`${mainStyle.pointColor.red}`);
-  // const [moviecolor, setMoviecolor] = useState(`${mainStyle.color.sub}`);
-  // const [tvcolor, setTvcolor] = useState(`${mainStyle.color.sub}`);
-  // const [searchcolor, setSearchcolor] = useState(`${mainStyle.color.sub}`);
-  // const [upcommingcolor, setUpcommingcolor] = useState(
-  //   `${mainStyle.color.sub}`
-  // );
-
-  // const homeClick = () => {
-  //   setHomecolor(`${mainStyle.pointColor.red}`);
-  //   setMoviecolor(`${mainStyle.color.sub}`);
-  //   setTvcolor(`${mainStyle.color.sub}`);
-  //   setSearchcolor(`${mainStyle.color.sub}`);
-  //   setUpcommingcolor(`${mainStyle.color.sub}`);
-  // };
-  // const movieClick = () => {
-  //   setHomecolor(`${mainStyle.color.sub}`);
-  //   setMoviecolor(`${mainStyle.pointColor.red}`);
-  //   setTvcolor(`${mainStyle.color.sub}`);
-  //   setSearchcolor(`${mainStyle.color.sub}`);
-  //   setUpcommingcolor(`${mainStyle.color.sub}`);
-  // };
-  // const tvClick = () => {
-  //   setHomecolor(`${mainStyle.color.sub}`);
-  //   setMoviecolor(`${mainStyle.color.sub}`);
-  //   setTvcolor(`${mainStyle.pointColor.red}`);
-  //   setSearchcolor(`${mainStyle.color.sub}`);
-  //   setUpcommingcolor(`${mainStyle.color.sub}`);
-  // };
-  // const searchClick = () => {
-  //   setHomecolor(`${mainStyle.color.sub}`);
-  //   setMoviecolor(`${mainStyle.color.sub}`);
-  //   setTvcolor(`${mainStyle.color.sub}`);
-  //   setSearchcolor(`${mainStyle.pointColor.red}`);
-  //   setUpcommingcolor(`${mainStyle.color.sub}`);
-  // };
-  // const upcommingClick = () => {
-  //   setHomecolor(`${mainStyle.color.sub}`);
-  //   setMoviecolor(`${mainStyle.color.sub}`);
-  //   setTvcolor(`${mainStyle.color.sub}`);
-  //   setSearchcolor(`${mainStyle.color.sub}`);
-  //   setUpcommingcolor(`${mainStyle.pointColor.red}`);
-  // };
+  const [momenu, setMomenu] = useState("none");
   return (
     <SHeader>
       <Wrap>
@@ -123,6 +139,36 @@ export const Header = () => {
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </Link>
         </Icon>
+        <MoMenuWrap>
+          <MOIcon
+            onClick={() => {
+              setMomenu("flex");
+            }}
+          >
+            <FontAwesomeIcon icon={faBars} />
+          </MOIcon>
+          <MoMenus style={{ display: `${momenu}` }}>
+            <MoCloseIcon
+              onClick={() => {
+                setMomenu("none");
+              }}
+            >
+              <FontAwesomeIcon icon={faClose} />
+            </MoCloseIcon>
+            <MoMenu>
+              <Link to={"/detailMovie"}>Movies</Link>
+            </MoMenu>
+            <MoMenu>
+              <Link to={"/detailTv"}>TV Shows</Link>
+            </MoMenu>
+            <MoMenu>
+              <Link to={"/upComming"}>Up Comming</Link>
+            </MoMenu>
+            <MoMenu>
+              <Link to={"/search"}>Search</Link>
+            </MoMenu>
+          </MoMenus>
+        </MoMenuWrap>
       </Wrap>
     </SHeader>
   );

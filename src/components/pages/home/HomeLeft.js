@@ -6,6 +6,10 @@ const Wrap = styled.div`
   width: 60vw;
   height: 100vh;
   display: flex;
+  @media screen and (max-width: 500px) {
+    width: 100vw;
+    height: 50vh;
+  }
   a {
     width: 50%;
   }
