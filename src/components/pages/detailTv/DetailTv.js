@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { tvApi } from "../../../api";
+import { ScrollTop } from "../../../ScrollTop";
 import { Loading } from "../../Loading";
+import { PageTitle } from "../../PageTitle";
 import { TDetailBg } from "./TDetailBg";
 
 export const DetailTv = () => {
@@ -34,6 +36,8 @@ export const DetailTv = () => {
   console.log(tPop);
   return (
     <>
+      <PageTitle title={"TV Shows"} />
+      <ScrollTop />
       {loading ? <Loading /> : <TDetailBg db={tPop} db2={tTop} db3={tOnAir} />}
     </>
   );

@@ -90,6 +90,8 @@ const Play = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 42px;
+  cursor: pointer;
+  z-index: 9998;
 `;
 const Trailer = styled.div`
   width: 100px;
@@ -100,6 +102,7 @@ const Trailer = styled.div`
   justify-content: center;
   font-size: 24px;
   cursor: pointer;
+  z-index: 9998;
 `;
 const RightCon = styled.div`
   max-width: 400px;
@@ -176,6 +179,7 @@ const Popup = styled.div`
   left: 100px;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
+  z-index: 9999;
 `;
 
 const Button = styled.div`

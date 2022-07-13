@@ -7,6 +7,8 @@ import { imgUrl, videoUrl } from "../../../constants/constant";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faStar, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { mainStyle } from "../../../styles/globalStyle";
+import { PageTitle } from "../../PageTitle";
+import { ScrollTop } from "../../../ScrollTop";
 
 const Bg = styled.div`
   width: 99vw;
@@ -175,6 +177,8 @@ export const TSubPage = () => {
   console.log(videosDb);
   return (
     <>
+      <PageTitle title={"TV Show Detail"} />
+      <ScrollTop />
       {loading ? (
         <Loading />
       ) : (

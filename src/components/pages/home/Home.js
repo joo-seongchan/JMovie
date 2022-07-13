@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { movieApi, tvApi } from "../../../api";
+import { ScrollTop } from "../../../ScrollTop";
 import { Loading } from "../../Loading";
+import { PageTitle } from "../../PageTitle";
 import { HomeLeft } from "./HomeLeft";
 import { HomeRight } from "./HomeRight";
 
@@ -35,6 +37,8 @@ export const Home = () => {
   }, []);
   return (
     <div>
+      <PageTitle title={"Home"} />
+      <ScrollTop />
       {loading ? (
         <Loading />
       ) : (

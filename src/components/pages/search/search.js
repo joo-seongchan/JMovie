@@ -5,8 +5,10 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { movieApi, tvApi } from "../../../api";
 import { imgUrl } from "../../../constants/constant";
+import { ScrollTop } from "../../../ScrollTop";
 import { mainStyle } from "../../../styles/globalStyle";
 import { Loading } from "../../Loading";
+import { PageTitle } from "../../PageTitle";
 
 const Container = styled.div`
   padding: 0 100px;
@@ -146,6 +148,8 @@ export const Search = () => {
   //   console.log(loading);
   return (
     <Container>
+      <PageTitle title={"Search"} />
+      <ScrollTop />
       <Title>J MOVIE</Title>
       <form onSubmit={handleSubmit(searchData)}>
         <Input

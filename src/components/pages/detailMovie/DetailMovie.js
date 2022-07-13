@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { movieApi } from "../../../api";
+import { ScrollTop } from "../../../ScrollTop";
 import { Loading } from "../../Loading";
+import { PageTitle } from "../../PageTitle";
 import { MDetailBg } from "./MDetailBg";
 
 export const DetailMovie = () => {
@@ -33,6 +35,10 @@ export const DetailMovie = () => {
   }, []);
 
   return (
-    <>{loading ? <Loading /> : <MDetailBg db={mnow} db2={mtop} db3={mpop} />}</>
+    <>
+      <PageTitle title={"Movies"} />
+      <ScrollTop />
+      {loading ? <Loading /> : <MDetailBg db={mnow} db2={mtop} db3={mpop} />}
+    </>
   );
 };

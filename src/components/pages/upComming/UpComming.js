@@ -5,6 +5,8 @@ import { mainStyle } from "../../../styles/globalStyle";
 import { imgUrl } from "../../../constants/constant";
 import { Link } from "react-router-dom";
 import { Loading } from "../../Loading";
+import { PageTitle } from "../../PageTitle";
+import { ScrollTop } from "../../../ScrollTop";
 
 const Title = styled.div`
   text-align: center;
@@ -54,6 +56,8 @@ export const UpComming = () => {
   console.log(upComming);
   return (
     <>
+      <PageTitle title={"Up Comming"} />
+      <ScrollTop />
       {loading ? (
         <Loading />
       ) : (

@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { PageTitle } from "../PageTitle";
+import { ScrollTop } from "../../ScrollTop";
+import { mainStyle } from "../../styles/globalStyle";
 
 const Wrap = styled.div`
   width: 99vw;
@@ -11,14 +14,20 @@ const Wrap = styled.div`
 `;
 const Title = styled.div`
   font-size: 100px;
+  color: ${mainStyle.pointColor.red};
 `;
 const SubTitle = styled.div`
   font-size: 60px;
   margin: 20px 0;
+  color: ${mainStyle.pointColor.red};
 `;
 const Text = styled.div`
   font-size: 20px;
   text-align: center;
+  letter-spacing: 0px;
+  line-height: 30px;
+  margin-top: 20px;
+  color: ${mainStyle.color.p};
 `;
 const Button = styled.div`
   width: 150px;
@@ -26,16 +35,19 @@ const Button = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid white;
-  margin-top: 30px;
+  border: 2px solid ${mainStyle.pointColor.red};
+  margin-top: 50px;
   a {
     font-size: 28px;
+    color: ${mainStyle.pointColor.red};
   }
 `;
 
 export const NotFound = () => {
   return (
     <Wrap>
+      <PageTitle title={"Error"} />
+      <ScrollTop />
       <Title>404 ERROR</Title>
       <SubTitle>Not Found</SubTitle>
       <Text>
