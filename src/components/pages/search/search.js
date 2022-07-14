@@ -13,7 +13,7 @@ import { PageTitle } from "../../PageTitle";
 const Container = styled.div`
   padding: 0 100px;
   min-height: 100vh;
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 1000px) {
     padding: ${mainStyle.mopadding};
   }
 `;
@@ -82,7 +82,7 @@ const Wrap = styled.div`
     margin-right: 0;
     margin-left: 10px;
   }
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 1000px) {
     width: 100%;
     grid-template-columns: 1fr;
   }
@@ -208,7 +208,11 @@ export const Search = () => {
                           <Link to={`/msubpage/${term.id}`}>
                             <Bg
                               style={{
-                                background: `url(${imgUrl}${term.poster_path}) no-repeat center/cover `,
+                                background: `url(${
+                                  term.poster_path
+                                    ? `${imgUrl}${term.poster_path}`
+                                    : "https://www.airi-ip.com/en/wp-content/themes/dp-fancie-note-business/img/post_thumbnail/noimage.png"
+                                }) no-repeat center/cover `,
                               }}
                             />
                             <ConTitle>{term.title}</ConTitle>
@@ -232,7 +236,11 @@ export const Search = () => {
                           <Link to={`/tsubpage/${term.id}`}>
                             <Bg
                               style={{
-                                background: `url(${imgUrl}${term.poster_path}) no-repeat center/cover `,
+                                background: `url(${
+                                  term.poster_path
+                                    ? `${imgUrl}${term.poster_path}`
+                                    : "https://www.airi-ip.com/en/wp-content/themes/dp-fancie-note-business/img/post_thumbnail/noimage.png"
+                                }) no-repeat center/cover `,
                               }}
                             />
                             <ConTitle>{term.name}</ConTitle>

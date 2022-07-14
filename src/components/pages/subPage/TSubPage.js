@@ -9,7 +9,6 @@ import { faPlay, faStar, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { mainStyle } from "../../../styles/globalStyle";
 import { PageTitle } from "../../PageTitle";
 import { ScrollTop } from "../../../ScrollTop";
-
 const Bg = styled.div`
   width: 99vw;
   height: 100vh;
@@ -24,11 +23,13 @@ const BgCover = styled.div`
     rgba(29, 29, 29, 0),
     rgba(29, 29, 29, 1)
   );
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 const Section = styled.div`
   width: 99vw;
-  height: 100vh;
   padding: 0 100px;
   padding-top: 350px;
   position: absolute;
@@ -36,10 +37,22 @@ const Section = styled.div`
   left: 0;
   display: flex;
   justify-content: space-between;
+  @media screen and (max-width: 1000px) {
+    position: relative;
+    padding: ${mainStyle.mopadding};
+    padding-top: 20px;
+    justify-content: start;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const LeftCon = styled.div`
   max-width: 600px;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    text-align: center;
+  }
 `;
 const Title = styled.div`
   font-size: 70px;
@@ -47,6 +60,9 @@ const Title = styled.div`
   max-height: 300px;
   display: flex;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    font-size: 40px;
+  }
 `;
 
 const PointWrap = styled.div`
@@ -54,6 +70,9 @@ const PointWrap = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 50px;
+  @media screen and (max-width: 500px) {
+    margin-top: 0;
+  }
 `;
 const StarWrap = styled.div`
   overflow: hidden;
@@ -65,6 +84,9 @@ const Stars = styled.div`
 `;
 const Point = styled.div`
   font-size: 30px;
+  @media screen and (max-width: 500px) {
+    font-size: 24px;
+  }
 `;
 const Genres = styled.div`
   margin-top: 20px;
@@ -88,12 +110,16 @@ const BoxWrap = styled.div`
   height: 100px;
   margin-top: 50px;
   display: flex;
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+    margin-top: 20px;
+  }
 `;
 
 const Play = styled.div`
   width: 50%;
   height: 100%;
-  background-color: rgba(187, 22, 55, 1);
+  background-color: rgba(27, 151, 137, 1);
   font-size: 50px;
   display: flex;
   justify-content: center;
@@ -103,7 +129,7 @@ const Play = styled.div`
 const Trailer = styled.div`
   width: 50%;
   height: 100%;
-  background-color: rgba(238, 18, 62, 1);
+  background-color: ${mainStyle.pointColor.green};
   font-size: 30px;
   display: flex;
   justify-content: center;
@@ -113,17 +139,30 @@ const Trailer = styled.div`
 
 const RightCon = styled.div`
   padding-top: 100px;
+  @media screen and (max-width: 500px) {
+    padding-top: 50px;
+    width: 100%;
+  }
 `;
 const Tagline = styled.div`
   max-width: 500px;
   font-size: 40px;
   color: ${mainStyle.color.sub};
+  @media screen and (max-width: 500px) {
+    font-size: 28px;
+    max-width: 100%;
+  }
 `;
 const Text = styled.div`
   max-width: 500px;
   margin-top: 30px;
   color: ${mainStyle.color.p};
   line-height: 30px;
+  @media screen and (max-width: 500px) {
+    font-size: 15px;
+    max-width: 100%;
+    margin-bottom: 50px;
+  }
 `;
 const Popup = styled.div`
   width: 90vw;
@@ -133,6 +172,10 @@ const Popup = styled.div`
   left: 100px;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
+  @media screen and (max-width: 1000px) {
+    left: 20px;
+    height: 50vh;
+  }
 `;
 
 const Button = styled.div`
@@ -185,7 +228,11 @@ export const TSubPage = () => {
         <>
           <Bg
             style={{
-              background: `url(${imgUrl}${detailDb.backdrop_path}) no-repeat center/cover`,
+              background: `url(${
+                detailDb.backdrop_path
+                  ? `${imgUrl}${detailDb.backdrop_path}`
+                  : "https://www.airi-ip.com/en/wp-content/themes/dp-fancie-note-business/img/post_thumbnail/noimage.png"
+              }) no-repeat center/cover`,
             }}
           >
             <BgCover></BgCover>

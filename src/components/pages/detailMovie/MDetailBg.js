@@ -1,4 +1,9 @@
-import { faPlay, faStar, faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRight,
+  faPlay,
+  faStar,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
@@ -8,16 +13,21 @@ import { mainStyle } from "../../../styles/globalStyle";
 import { Loading } from "../../Loading";
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/navigation";
 
 const Section = styled.section`
   height: 100vh;
   position: relative;
+  @media screen and (max-width: 1000px) {
+    height: auto;
+  }
 `;
 const Wrap = styled.div`
   width: 99vw;
   height: 80vh;
+  position: relative;
 `;
 const Bg = styled.div`
   width: 100%;
@@ -36,10 +46,22 @@ const ConWrap1 = styled.div`
   );
   display: flex;
   justify-content: space-between;
+  @media screen and (max-width: 1000px) {
+    padding: ${mainStyle.mopadding};
+    padding-top: 0;
+    align-items: flex-end;
+  }
 `;
 
 const LeftCon = styled.div`
   max-width: 700px;
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+    max-width: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
 `;
 const Title = styled.div`
   height: 200px;
@@ -49,6 +71,17 @@ const Title = styled.div`
   font-weight: 700;
   letter-spacing: 2px;
   line-height: 70px;
+
+  @media screen and (max-width: 1000px) {
+    height: auto;
+    padding-bottom: 50px;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 40px;
+    line-height: 50px;
+    padding-bottom: 50px;
+    width: 100%;
+  }
 `;
 const PointWrap = styled.div`
   display: flex;
@@ -56,6 +89,9 @@ const PointWrap = styled.div`
   align-items: center;
   margin-top: 20px;
   width: 200px;
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 const Point = styled.div`
@@ -77,10 +113,16 @@ const Genres = styled.div`
   font-size: 20px;
   margin-top: 20px;
   color: ${mainStyle.color.sub};
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
 `;
 const PlayWrap = styled.div`
   margin-top: 30px;
   display: flex;
+  @media screen and (max-width: 1000px) {
+    margin-top: 10px;
+  }
 `;
 const Play = styled.div`
   width: 100px;
@@ -92,6 +134,9 @@ const Play = styled.div`
   font-size: 42px;
   cursor: pointer;
   z-index: 9998;
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
 `;
 const Trailer = styled.div`
   width: 100px;
@@ -103,6 +148,34 @@ const Trailer = styled.div`
   font-size: 24px;
   z-index: 9998;
   cursor: pointer;
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
+`;
+
+const MoNav = styled.div`
+  padding: 10px 20px;
+  border-radius: 25px;
+  background-color: ${mainStyle.pointColor.red};
+  font-size: 22px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  display: none;
+  cursor: pointer;
+  a {
+    width: 100%;
+    height: 100%;
+  }
+  @media screen and (max-width: 1000px) {
+    display: block;
+  }
+  @media screen and (max-width: 500px) {
+    padding: 5px 15px;
+    bottom: 10px;
+    right: 20px;
+  }
 `;
 const RightCon = styled.div`
   max-width: 400px;
@@ -115,6 +188,9 @@ const RightCon = styled.div`
     font-size: 16px;
     color: ${mainStyle.color.sub};
   }
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 const Container = styled.div`
@@ -124,6 +200,12 @@ const Container = styled.div`
   position: relative;
   top: -250px;
   left: 0;
+  @media screen and (max-width: 1000px) {
+    position: static;
+    top: 0;
+    left: 0;
+    margin-top: 30px;
+  }
 `;
 const MenuBox = styled.ul`
   display: flex;
@@ -132,6 +214,12 @@ const MenuBox = styled.ul`
   padding: 10px;
   width: 500px;
   margin-right: 100px;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+  }
+  @media screen and (max-width: 1000px) {
+    margin-right: 0;
+  }
 `;
 const Menu = styled.li`
   font-size: 24px;
@@ -159,6 +247,11 @@ const ConWrap = styled.div`
     transform-origin: bottom;
     height: 400px;
     margin-top: 0;
+  }
+  @media screen and (max-width: 500px) {
+    &:hover {
+      height: 400px;
+    }
   }
 `;
 const MImg = styled.div`
@@ -211,6 +304,10 @@ export const MDetailBg = ({ db, db2, db3 }) => {
         spaceBetween: 10,
       },
       640: {
+        slidesPerView: 5.2,
+        spaceBetween: 25,
+      },
+      1080: {
         slidesPerView: 8.2,
         spaceBetween: 25,
       },
@@ -284,6 +381,9 @@ export const MDetailBg = ({ db, db2, db3 }) => {
                 </RightCon>
               </ConWrap1>
             </Bg>
+            <MoNav>
+              <Link to={`/msubpage/${detailDb.id}`}>More +</Link>
+            </MoNav>
           </Wrap>
           <Container>
             <MenuBox>

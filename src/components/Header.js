@@ -155,16 +155,32 @@ export const Header = () => {
             >
               <FontAwesomeIcon icon={faClose} />
             </MoCloseIcon>
-            <MoMenu>
+            <MoMenu
+              onClick={() => {
+                setMomenu("none");
+              }}
+            >
               <Link to={"/detailMovie"}>Movies</Link>
             </MoMenu>
-            <MoMenu>
+            <MoMenu
+              onClick={() => {
+                setMomenu("none");
+              }}
+            >
               <Link to={"/detailTv"}>TV Shows</Link>
             </MoMenu>
-            <MoMenu>
+            <MoMenu
+              onClick={() => {
+                setMomenu("none");
+              }}
+            >
               <Link to={"/upComming"}>Up Comming</Link>
             </MoMenu>
-            <MoMenu>
+            <MoMenu
+              onClick={() => {
+                setMomenu("none");
+              }}
+            >
               <Link to={"/search"}>Search</Link>
             </MoMenu>
           </MoMenus>
