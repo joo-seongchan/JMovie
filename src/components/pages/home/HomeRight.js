@@ -54,7 +54,7 @@ const MainBox = styled.div`
     font-size: 24px;
     margin-top: 10px;
   }
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 1000px) {
     font-size: 32px;
   }
 `;

@@ -12,7 +12,7 @@ import { PageTitle } from "../../PageTitle";
 
 const Container = styled.div`
   padding: 0 100px;
-  min-height: 100vh;
+  min-height: 90vh;
   @media screen and (max-width: 1000px) {
     padding: ${mainStyle.mopadding};
   }
@@ -37,6 +37,7 @@ const Input = styled.input`
   font-size: 20px;
   border-radius: 50px;
   margin: 100px 0;
+  margin-bottom: 50px;
   &::placeholder {
     font-size: 22px;
   }
@@ -44,22 +45,13 @@ const Input = styled.input`
     margin: 50px 0;
   }
 `;
-const TitleWrap = styled.div`
-  width: 100%;
-  display: flex;
-  margin-bottom: 20px;
-  @media screen and (max-width: 500px) {
-    display: none;
-  }
-`;
+
 const MainTitle = styled.div`
   width: 50%;
   font-size: 36px;
   padding-left: 15px;
+  margin: 30px 0;
   color: ${mainStyle.pointColor.red};
-  &:last-child {
-    color: ${mainStyle.pointColor.green};
-  }
 `;
 
 const Section = styled.section`
@@ -70,10 +62,19 @@ const Section = styled.section`
   }
 `;
 
-const Wrap = styled.div`
+const Container2 = styled.div`
   width: 50%;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+  }
+`;
+
+const Wrap = styled.div`
+  width: 100%;
   display: grid;
+  flex-direction: column;
   grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 450px;
   column-gap: 10px;
   row-gap: 10px;
   margin-right: 10px;
@@ -83,7 +84,6 @@ const Wrap = styled.div`
     margin-left: 10px;
   }
   @media screen and (max-width: 1000px) {
-    width: 100%;
     grid-template-columns: 1fr;
   }
 `;
@@ -111,6 +111,9 @@ const ConTitle = styled.div`
 `;
 const MError = styled.div`
   font-size: 48px;
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
 `;
 
 export const Search = () => {
@@ -126,7 +129,7 @@ export const Search = () => {
     setError,
     clearErrors,
   } = useForm({
-    mode: "onChange",
+    mode: "onSubmit",
   });
 
   const searchData = async () => {
@@ -140,7 +143,7 @@ export const Search = () => {
 
       if (mdata.length <= 0) {
         setError("result", {
-          message: "영화가 없어요...!",
+          massage: "영화가 없어요...!",
         });
       } else {
         setMsearchterm(mdata);
@@ -150,21 +153,20 @@ export const Search = () => {
         data: { results: tdata },
       } = await tvApi.search(term);
 
-      if (mdata.length <= 0) {
-        setError("results", {
-          message: "TV Show가 없어요...!",
+      if (tdata.length <= 0) {
+        setError("result", {
+          massage: "TV Show가 없어요...!",
         });
       } else {
         setTsearchterm(tdata);
       }
+      console.log(msearchterm);
       setLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
-  //   console.log(msearchterm);
-  console.log(tsearchterm);
-  //   console.log(loading);
+
   return (
     <Container>
       <PageTitle title={"Search"} />
@@ -186,72 +188,76 @@ export const Search = () => {
         <Loading />
       ) : (
         <>
-          {titleloading ? (
-            <TitleWrap>
-              <MainTitle>Movies</MainTitle>
-              <MainTitle>Tv Showes</MainTitle>
-            </TitleWrap>
-          ) : (
-            ""
-          )}
-
           <Section>
-            <Wrap>
-              {msearchterm && (
-                <>
-                  {msearchterm.length <= 0 ? (
-                    <MError>검색된 영화가 없습니다.</MError>
-                  ) : (
-                    <>
-                      {msearchterm.map((term) => (
-                        <Con key={term.id}>
-                          <Link to={`/msubpage/${term.id}`}>
-                            <Bg
-                              style={{
-                                background: `url(${
-                                  term.poster_path
-                                    ? `${imgUrl}${term.poster_path}`
-                                    : "https://www.airi-ip.com/en/wp-content/themes/dp-fancie-note-business/img/post_thumbnail/noimage.png"
-                                }) no-repeat center/cover `,
-                              }}
-                            />
-                            <ConTitle>{term.title}</ConTitle>
-                          </Link>
-                        </Con>
-                      ))}
-                    </>
-                  )}
-                </>
+            <Container2>
+              {titleloading ? <MainTitle>Movies</MainTitle> : ""}
+
+              <Wrap>
+                {msearchterm && (
+                  <>
+                    {msearchterm.length <= 0 ? (
+                      <MError>검색된 영화가 없습니다.</MError>
+                    ) : (
+                      <>
+                        {msearchterm.map((term) => (
+                          <Con key={term.id}>
+                            <Link to={`/msubpage/${term.id}`}>
+                              <Bg
+                                style={{
+                                  background: `url(${
+                                    term.poster_path
+                                      ? `${imgUrl}${term.poster_path}`
+                                      : "https://www.airi-ip.com/en/wp-content/themes/dp-fancie-note-business/img/post_thumbnail/noimage.png"
+                                  }) no-repeat center/cover `,
+                                }}
+                              />
+                              <ConTitle>{term.title}</ConTitle>
+                            </Link>
+                          </Con>
+                        ))}
+                      </>
+                    )}
+                  </>
+                )}
+              </Wrap>
+            </Container2>
+            <Container2>
+              {titleloading ? (
+                <MainTitle style={{ color: `${mainStyle.pointColor.green}` }}>
+                  Tv Showes
+                </MainTitle>
+              ) : (
+                ""
               )}
-            </Wrap>
-            <Wrap>
-              {tsearchterm && (
-                <>
-                  {tsearchterm.length <= 0 ? (
-                    <MError>검색 된 TV Show가 없습니다.</MError>
-                  ) : (
-                    <>
-                      {tsearchterm.map((term) => (
-                        <Con key={term.id}>
-                          <Link to={`/tsubpage/${term.id}`}>
-                            <Bg
-                              style={{
-                                background: `url(${
-                                  term.poster_path
-                                    ? `${imgUrl}${term.poster_path}`
-                                    : "https://www.airi-ip.com/en/wp-content/themes/dp-fancie-note-business/img/post_thumbnail/noimage.png"
-                                }) no-repeat center/cover `,
-                              }}
-                            />
-                            <ConTitle>{term.name}</ConTitle>
-                          </Link>
-                        </Con>
-                      ))}
-                    </>
-                  )}
-                </>
-              )}
-            </Wrap>
+              <Wrap>
+                {tsearchterm && (
+                  <>
+                    {tsearchterm.length <= 0 ? (
+                      <MError>검색 된 TV Show가 없습니다.</MError>
+                    ) : (
+                      <>
+                        {tsearchterm.map((term) => (
+                          <Con key={term.id}>
+                            <Link to={`/tsubpage/${term.id}`}>
+                              <Bg
+                                style={{
+                                  background: `url(${
+                                    term.poster_path
+                                      ? `${imgUrl}${term.poster_path}`
+                                      : "https://www.airi-ip.com/en/wp-content/themes/dp-fancie-note-business/img/post_thumbnail/noimage.png"
+                                  }) no-repeat center/cover `,
+                                }}
+                              />
+                              <ConTitle>{term.name}</ConTitle>
+                            </Link>
+                          </Con>
+                        ))}
+                      </>
+                    )}
+                  </>
+                )}
+              </Wrap>
+            </Container2>
           </Section>
         </>
       )}

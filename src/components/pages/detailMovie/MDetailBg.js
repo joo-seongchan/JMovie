@@ -113,6 +113,18 @@ const Genres = styled.div`
   font-size: 20px;
   margin-top: 20px;
   color: ${mainStyle.color.sub};
+  span {
+    &::after {
+      content: "|";
+      margin: 0 10px;
+    }
+    &:last-child {
+      &::after {
+        display: none;
+      }
+    }
+  }
+
   @media screen and (max-width: 1000px) {
     display: none;
   }
@@ -268,7 +280,7 @@ const Popup = styled.div`
   height: 85vh;
   position: fixed;
   top: 120px;
-  left: 100px;
+  left: 5vw;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
   z-index: 9999;
@@ -360,7 +372,7 @@ export const MDetailBg = ({ db, db2, db3 }) => {
                   </PointWrap>
                   <Genres>
                     {detailDb.genres.map((genre) => (
-                      <span key={genre.id}>{genre.name} | </span>
+                      <span key={genre.id}>{genre.name}</span>
                     ))}
                   </Genres>
                   <PlayWrap>

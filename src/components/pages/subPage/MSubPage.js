@@ -13,6 +13,9 @@ import { ScrollTop } from "../../../ScrollTop";
 const Bg = styled.div`
   width: 100vw;
   height: 100vh;
+  @media screen and (max-width: 1000px) {
+    height: 60vh;
+  }
 `;
 
 const BgCover = styled.div`
@@ -91,6 +94,7 @@ const Point = styled.div`
 `;
 const Genres = styled.div`
   margin-top: 20px;
+  line-height: 30px;
   span {
     font-size: 24px;
     color: ${mainStyle.color.sub};
@@ -170,11 +174,11 @@ const Popup = styled.div`
   height: 85vh;
   position: fixed;
   top: 120px;
-  left: 100px;
+  left: 5vw;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
   @media screen and (max-width: 1000px) {
-    left: 20px;
+    left: 5vw;
     height: 50vh;
   }
 `;
