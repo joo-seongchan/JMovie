@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { imgUrl } from "../../../constants/constant";
 
 const Wrap = styled.div`
-  width: 60vw;
+  width: 65vw;
   height: 100vh;
   display: flex;
   @media screen and (max-width: 500px) {

@@ -20,7 +20,7 @@ const Container = styled.div`
 
 const Title = styled.div`
   font-size: 100px;
-  color: ${mainStyle.pointColor.red};
+  color: ${mainStyle.color.main};
   text-align: center;
   padding-top: 150px;
   @media screen and (max-width: 500px) {
@@ -76,7 +76,7 @@ const Wrap = styled.div`
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 450px;
   column-gap: 10px;
-  row-gap: 10px;
+  row-gap: 30px;
   margin-right: 10px;
   padding: 10px;
   &:nth-child(2) {

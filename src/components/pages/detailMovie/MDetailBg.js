@@ -41,15 +41,14 @@ const ConWrap1 = styled.div`
   background: linear-gradient(
     to right,
     rgba(29, 29, 29, 1),
+    rgba(29, 29, 29, 0.7),
     rgba(29, 29, 29, 0),
-    rgba(29, 29, 29, 1)
+    rgba(29, 29, 29, 0.7)
   );
-  display: flex;
-  justify-content: space-between;
+
   @media screen and (max-width: 1000px) {
     padding: ${mainStyle.mopadding};
     padding-top: 0;
-    align-items: flex-end;
   }
 `;
 
@@ -64,7 +63,7 @@ const LeftCon = styled.div`
   }
 `;
 const Title = styled.div`
-  height: 200px;
+  max-height: 200px;
   display: flex;
   align-items: center;
   font-size: 60px;
@@ -96,6 +95,7 @@ const PointWrap = styled.div`
 
 const Point = styled.div`
   font-size: 20px;
+  color: ${mainStyle.color.sub};
 `;
 
 const StarBox = styled.div`
@@ -136,50 +136,54 @@ const PlayWrap = styled.div`
     margin-top: 10px;
   }
 `;
-const Play = styled.div`
-  width: 100px;
-  height: 70px;
-  background-color: rgba(187, 22, 55, 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 42px;
-  cursor: pointer;
+const More = styled.div`
+  width: 80px;
+  height: 40px;
+
   z-index: 9998;
+  border: 1px solid white;
+  transition: 0.5s;
+  opacity: 0.8;
+  a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+  &:hover {
+    background-color: ${mainStyle.pointColor.red};
+    border: 1px solid rgba(187, 22, 55, 1);
+    opacity: 1;
+  }
   @media screen and (max-width: 1000px) {
     display: none;
   }
 `;
 const Trailer = styled.div`
-  width: 100px;
-  height: 70px;
-  background-color: rgba(238, 18, 62, 1);
+  width: 80px;
+  height: 40px;
+  border: 1px solid white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 16px;
   z-index: 9998;
   cursor: pointer;
+  margin-left: 20px;
+
+  transition: 0.5s;
+  opacity: 0.8;
+  &:hover {
+    background-color: rgba(187, 22, 55, 1);
+    border: 1px solid rgba(187, 22, 55, 1);
+    opacity: 1;
+  }
   @media screen and (max-width: 1000px) {
     display: none;
   }
-`;
 
-const MoNav = styled.div`
-  padding: 10px 20px;
-  border-radius: 25px;
-  background-color: ${mainStyle.pointColor.red};
-  font-size: 22px;
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  display: none;
-  cursor: pointer;
-  a {
-    width: 100%;
-    height: 100%;
-  }
   @media screen and (max-width: 1000px) {
     display: block;
   }
@@ -189,16 +193,27 @@ const MoNav = styled.div`
     right: 20px;
   }
 `;
-const RightCon = styled.div`
-  max-width: 400px;
-  padding-top: 50px;
+const Overview = styled.div`
+  max-width: 500px;
+  padding-top: 30px;
   letter-spacing: 0px;
   line-height: 24px;
   display: flex;
   flex-direction: column;
   p {
+    width: 100%;
+    height: 100%;
     font-size: 16px;
+    word-break: normal;
     color: ${mainStyle.color.sub};
+    background: linear-gradient(
+      to bottom,
+
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.3)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   @media screen and (max-width: 1000px) {
     display: none;
@@ -235,7 +250,6 @@ const MenuBox = styled.ul`
 `;
 const Menu = styled.li`
   font-size: 24px;
-  color: ${mainStyle.color.p};
   cursor: pointer;
   &:hover {
     color: ${mainStyle.color.main};
@@ -277,7 +291,7 @@ const MTitle = styled.div`
 `;
 const Popup = styled.div`
   width: 90vw;
-  height: 85vh;
+  height: 75vh;
   position: fixed;
   top: 120px;
   left: 5vw;
@@ -308,6 +322,9 @@ export const MDetailBg = ({ db, db2, db3 }) => {
   const [bgId, setBgid] = useState("168259");
   const [videosDb, setVideoDb] = useState();
   const [popup, setPopup] = useState("none");
+  const [latemenu, setLatemenu] = useState(`${mainStyle.color.main}`);
+  const [popmenu, setPopmenu] = useState(`${mainStyle.color.p}`);
+  const [highmenu, setHighmenu] = useState(`${mainStyle.color.p}`);
 
   const params = {
     breakpoints: {
@@ -358,6 +375,9 @@ export const MDetailBg = ({ db, db2, db3 }) => {
               <ConWrap1>
                 <LeftCon>
                   <Title>{detailDb.title}</Title>
+                  <Overview>
+                    <p>{detailDb.overview.slice(0, 200)} . . .</p>
+                  </Overview>
                   <PointWrap>
                     <StarBox point={detailDb.vote_average}>
                       <StarWrap point={detailDb.vote_average}>
@@ -376,9 +396,10 @@ export const MDetailBg = ({ db, db2, db3 }) => {
                     ))}
                   </Genres>
                   <PlayWrap>
-                    <Play>
-                      <FontAwesomeIcon icon={faPlay} />
-                    </Play>
+                    <More>
+                      <Link to={`/msubpage/${detailDb.id}`}>더보기 +</Link>
+                    </More>
+
                     <Trailer
                       onClick={() => {
                         setPopup("block");
@@ -388,35 +409,41 @@ export const MDetailBg = ({ db, db2, db3 }) => {
                     </Trailer>
                   </PlayWrap>
                 </LeftCon>
-                <RightCon>
-                  <p>{detailDb.overview}</p>
-                </RightCon>
               </ConWrap1>
             </Bg>
-            <MoNav>
-              <Link to={`/msubpage/${detailDb.id}`}>More +</Link>
-            </MoNav>
           </Wrap>
           <Container>
             <MenuBox>
               <Menu
                 onClick={() => {
                   setMenu("0");
+                  setLatemenu(`${mainStyle.color.main}`);
+                  setHighmenu(`${mainStyle.color.p}`);
+                  setPopmenu(`${mainStyle.color.p}`);
                 }}
+                style={{ color: `${latemenu}` }}
               >
                 최신영화
               </Menu>
               <Menu
                 onClick={() => {
                   setMenu("-400px");
+                  setLatemenu(`${mainStyle.color.p}`);
+                  setHighmenu(`${mainStyle.color.p}`);
+                  setPopmenu(`${mainStyle.color.main}`);
                 }}
+                style={{ color: `${popmenu}` }}
               >
                 인기영화
               </Menu>
               <Menu
                 onClick={() => {
                   setMenu("-800px");
+                  setLatemenu(`${mainStyle.color.p}`);
+                  setHighmenu(`${mainStyle.color.main}`);
+                  setPopmenu(`${mainStyle.color.p}`);
                 }}
+                style={{ color: `${highmenu}` }}
               >
                 추천영화
               </Menu>

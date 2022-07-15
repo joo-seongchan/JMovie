@@ -11,6 +11,7 @@ import { GlobalStyle } from "./styles/globalStyle";
 import { UpComming } from "./components/pages/upComming/UpComming";
 import { MSubPage } from "./components/pages/subPage/MSubPage";
 import { TSubPage } from "./components/pages/subPage/TSubPage";
+import { Login } from "./components/pages/login/Login";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/search" element={<Search />}></Route>
           <Route path="/msubpage/:id" element={<MSubPage />}></Route>
           <Route path="/tsubpage/:id" element={<TSubPage />}></Route>
+          <Route path="/login" element={<Login />}></Route>
           <Route path="/*" element={<NotFound />}></Route>
         </Routes>
         <Footer />

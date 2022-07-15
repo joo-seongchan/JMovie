@@ -32,7 +32,7 @@ const Wrap = styled.div`
 const Logo = styled.h1`
   a {
     color: ${mainStyle.pointColor.red};
-    font-size: 38px;
+    font-size: 28px;
     font-weight: 700;
   }
 `;

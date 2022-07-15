@@ -11,10 +11,10 @@ import { ScrollTop } from "../../../ScrollTop";
 const Title = styled.div`
   text-align: center;
   font-size: 80px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 5px;
-  margin-top: 100px;
-  color: ${mainStyle.pointColor.red};
+  margin-top: 200px;
+  color: ${mainStyle.color.main};
   @media screen and (max-width: 500px) {
     font-size: 50px;
   }
@@ -24,7 +24,7 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 20px;
-  row-gap: 20px;
+  row-gap: 40px;
   @media screen and (max-width: 1000px) {
     padding: ${mainStyle.mopadding};
     grid-template-columns: repeat(3, 1fr);
@@ -49,7 +49,7 @@ const Img = styled.div`
   height: 90%;
 `;
 const ConTitle = styled.div`
-  font-size: 24px;
+  font-size: 28px;
   margin-top: 20px;
   text-align: center;
 

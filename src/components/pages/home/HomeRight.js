@@ -6,7 +6,7 @@ import { imgUrl } from "../../../constants/constant";
 import { mainStyle } from "../../../styles/globalStyle";
 
 const RightWrap = styled.div`
-  width: 40vw;
+  width: 35vw;
   min-width: 400px;
   height: 100vh;
   @media screen and (max-width: 500px) {
@@ -39,23 +39,30 @@ const MainMenuWrap = styled.div`
 const MainBox = styled.div`
   width: 50%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  flex-direction: column;
-  font-size: 48px;
+
   background-color: ${mainStyle.pointColor.red};
   border: 5px solid ${mainStyle.bgColor};
   &:nth-child(2) {
     background-color: ${mainStyle.pointColor.green};
   }
   span {
-    font-size: 24px;
+    font-size: 16px;
     margin-top: 10px;
   }
-  @media screen and (max-width: 1000px) {
-    font-size: 32px;
+  a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    letter-spacing: -1px;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 35px;
+    @media screen and (max-width: 1000px) {
+      font-size: 28px;
+    }
   }
 `;
 
