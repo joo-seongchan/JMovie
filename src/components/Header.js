@@ -48,15 +48,14 @@ const Menu = styled.li`
     margin-left: 0;
   }
   a {
-    font-size: 20px;
+    font-size: 18px;
     &:hover {
       color: ${mainStyle.pointColor.red};
-      font-weight: 700;
     }
   }
 `;
 const Icon = styled.div`
-  font-size: 24px;
+  font-size: 22px;
   a {
     &:hover {
       color: ${mainStyle.pointColor.red};

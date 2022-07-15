@@ -12,7 +12,7 @@ import { ScrollTop } from "../../../ScrollTop";
 
 const Bg = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 900px;
   @media screen and (max-width: 1000px) {
     height: 60vh;
   }
@@ -24,8 +24,9 @@ const BgCover = styled.div`
   background: linear-gradient(
     to right,
     rgba(29, 29, 29, 1),
+    rgba(29, 29, 29, 0.8),
     rgba(29, 29, 29, 0),
-    rgba(29, 29, 29, 1)
+    rgba(29, 29, 29, 0.8)
   );
   @media screen and (max-width: 1000px) {
     display: none;
@@ -33,16 +34,16 @@ const BgCover = styled.div`
 `;
 
 const Section = styled.div`
-  width: 99vw;
+  width: 100vw;
   padding: 0 100px;
-  padding-top: 350px;
+  padding-top: 100px;
   position: absolute;
   top: 0;
   left: 0;
   display: flex;
   justify-content: space-between;
   @media screen and (max-width: 1000px) {
-    position: relative;
+    position: unset;
     padding: ${mainStyle.mopadding};
     padding-top: 20px;
     justify-content: start;
@@ -55,17 +56,47 @@ const LeftCon = styled.div`
   max-width: 600px;
   @media screen and (max-width: 500px) {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
   }
 `;
 const Title = styled.div`
   font-size: 70px;
-  min-height: 150px;
+  /* min-height: 150px; */
   max-height: 300px;
   display: flex;
+  line-height: 90px;
   align-items: center;
   @media screen and (max-width: 500px) {
     font-size: 40px;
+    line-height: 50px;
+  }
+`;
+const RightCon = styled.div`
+  padding-top: 50px;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+  }
+`;
+const Tagline = styled.div`
+  max-width: 500px;
+  font-size: 30px;
+  color: ${mainStyle.color.sub};
+  @media screen and (max-width: 500px) {
+    font-size: 26px;
+    max-width: 100%;
+  }
+`;
+const Text = styled.div`
+  max-width: 500px;
+  margin-top: 30px;
+  color: ${mainStyle.color.p};
+  line-height: 30px;
+  font-size: 16px;
+  @media screen and (max-width: 1000px) {
+    font-size: 14px;
   }
 `;
 
@@ -73,30 +104,31 @@ const PointWrap = styled.div`
   width: 300px;
   display: flex;
   justify-content: space-between;
-  margin-top: 50px;
+  margin-top: 20px;
   @media screen and (max-width: 500px) {
-    margin-top: 0;
+    width: 200px;
   }
 `;
 const StarWrap = styled.div`
   overflow: hidden;
 `;
 const Stars = styled.div`
-  width: 169px;
+  width: 112.5px;
   color: yellow;
-  font-size: 30px;
+  font-size: 20px;
 `;
 const Point = styled.div`
-  font-size: 30px;
+  font-size: 20px;
+  color: ${mainStyle.color.sub};
   @media screen and (max-width: 500px) {
-    font-size: 24px;
+    font-size: 18px;
   }
 `;
 const Genres = styled.div`
   margin-top: 20px;
   line-height: 30px;
   span {
-    font-size: 24px;
+    font-size: 20px;
     color: ${mainStyle.color.sub};
     &::after {
       content: "|";
@@ -111,13 +143,13 @@ const Genres = styled.div`
 `;
 
 const BoxWrap = styled.div`
-  width: 250px;
-  height: 100px;
-  margin-top: 50px;
+  width: 200px;
+  height: 60px;
+  margin-top: 30px;
   display: flex;
   @media screen and (max-width: 1000px) {
     width: 100%;
-    margin-top: 20px;
+    margin: 20px 0;
   }
 `;
 
@@ -125,53 +157,37 @@ const Play = styled.div`
   width: 50%;
   height: 100%;
   background-color: rgba(187, 22, 55, 1);
-  font-size: 50px;
+  font-size: 38px;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    background-color: rgba(187, 22, 55, 0.8);
+    font-size: 42px;
+  }
 `;
 
 const Trailer = styled.div`
   width: 50%;
   height: 100%;
   background-color: rgba(238, 18, 62, 1);
-  font-size: 30px;
+  font-size: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    background-color: rgba(238, 18, 62, 0.9);
+    font-size: 26px;
+  }
 `;
 
-const RightCon = styled.div`
-  padding-top: 100px;
-  @media screen and (max-width: 500px) {
-    padding-top: 50px;
-    width: 100%;
-  }
-`;
-const Tagline = styled.div`
-  max-width: 500px;
-  font-size: 40px;
-  color: ${mainStyle.color.sub};
-  @media screen and (max-width: 500px) {
-    font-size: 28px;
-    max-width: 100%;
-  }
-`;
-const Text = styled.div`
-  max-width: 500px;
-  margin-top: 30px;
-  color: ${mainStyle.color.p};
-  line-height: 30px;
-  @media screen and (max-width: 1000px) {
-    font-size: 15px;
-    /* max-width: 100%; */
-    margin-bottom: 50px;
-  }
-`;
 const Popup = styled.div`
   width: 90vw;
-  height: 85vh;
+  height: 75vh;
   position: fixed;
   top: 120px;
   left: 5vw;
@@ -243,9 +259,13 @@ export const MSubPage = () => {
           <Section>
             <LeftCon>
               <Title>{detailDb.title}</Title>
+              <RightCon>
+                <Tagline>{detailDb.tagline}</Tagline>
+                <Text>{detailDb.overview}</Text>
+              </RightCon>
               <PointWrap>
                 <StarWrap
-                  style={{ width: `${detailDb.vote_average * 16.9}px` }}
+                  style={{ width: `${detailDb.vote_average * 11.25}px` }}
                 >
                   <Stars>
                     <FontAwesomeIcon icon={faStar} />
@@ -275,10 +295,6 @@ export const MSubPage = () => {
                 </Trailer>
               </BoxWrap>
             </LeftCon>
-            <RightCon>
-              <Tagline>{detailDb.tagline}</Tagline>
-              <Text>{detailDb.overview}</Text>
-            </RightCon>
           </Section>
           <Popup style={{ display: `${popup}` }}>
             <Button

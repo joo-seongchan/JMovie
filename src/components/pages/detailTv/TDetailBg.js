@@ -1,4 +1,9 @@
-import { faPlay, faStar, faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRight,
+  faPlay,
+  faStar,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
@@ -13,16 +18,16 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 const Section = styled.section`
-  height: 100vh;
+  height: 980px;
   position: relative;
-  @media screen and (max-width: 1000px) {
-    height: auto;
-  }
 `;
 const Wrap = styled.div`
-  width: 99vw;
-  height: 80vh;
+  width: 100%;
+  height: 70%;
   position: relative;
+  @media screen and (max-width: 1000px) {
+    height: 59.5%;
+  }
 `;
 const Bg = styled.div`
   width: 100%;
@@ -36,15 +41,24 @@ const ConWrap1 = styled.div`
   background: linear-gradient(
     to right,
     rgba(29, 29, 29, 1),
+    rgba(29, 29, 29, 0.8),
     rgba(29, 29, 29, 0),
-    rgba(29, 29, 29, 1)
+    rgba(29, 29, 29, 0.8)
   );
-  display: flex;
-  justify-content: space-between;
+
   @media screen and (max-width: 1000px) {
     padding: ${mainStyle.mopadding};
     padding-top: 0;
-    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(
+      to right,
+
+      rgba(29, 29, 29, 0.8),
+      rgba(29, 29, 29, 0),
+      rgba(29, 29, 29, 0.8)
+    );
   }
 `;
 
@@ -53,13 +67,11 @@ const LeftCon = styled.div`
   @media screen and (max-width: 1000px) {
     width: 100%;
     max-width: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+    padding-bottom: 40px;
   }
 `;
 const Title = styled.div`
-  height: 200px;
+  max-height: 200px;
   display: flex;
   align-items: center;
   font-size: 60px;
@@ -67,15 +79,11 @@ const Title = styled.div`
   letter-spacing: 2px;
   line-height: 70px;
 
-  @media screen and (max-width: 1000px) {
-    height: auto;
-    padding-bottom: 50px;
-  }
   @media screen and (max-width: 500px) {
-    font-size: 40px;
+    font-size: 36px;
     line-height: 50px;
-    padding-bottom: 50px;
     width: 100%;
+    margin-bottom: 20px;
   }
 `;
 const PointWrap = styled.div`
@@ -91,6 +99,7 @@ const PointWrap = styled.div`
 
 const Point = styled.div`
   font-size: 20px;
+  color: ${mainStyle.color.sub};
 `;
 
 const StarBox = styled.div`
@@ -119,6 +128,7 @@ const Genres = styled.div`
       }
     }
   }
+
   @media screen and (max-width: 1000px) {
     display: none;
   }
@@ -127,71 +137,79 @@ const PlayWrap = styled.div`
   margin-top: 30px;
   display: flex;
   @media screen and (max-width: 1000px) {
-    margin-top: 10px;
+    margin-bottom: 30px;
   }
 `;
-const Play = styled.div`
-  width: 100px;
-  height: 70px;
-  background-color: rgba(27, 151, 137, 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 42px;
-  cursor: pointer;
-  z-index: 9998;
-  @media screen and (max-width: 1000px) {
-    display: none;
-  }
-`;
-const Trailer = styled.div`
-  width: 100px;
-  height: 70px;
-  background-color: ${mainStyle.pointColor.green};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  z-index: 9998;
-  cursor: pointer;
-  @media screen and (max-width: 1000px) {
-    display: none;
-  }
-`;
+const More = styled.div`
+  width: 80px;
+  height: 40px;
 
-const MoNav = styled.div`
-  padding: 10px 20px;
-  border-radius: 25px;
-  background-color: ${mainStyle.pointColor.green};
-  font-size: 22px;
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  display: none;
+  z-index: 9998;
+  border: 1px solid white;
+  transition: 0.3s;
+  opacity: 0.8;
   a {
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
   }
-  @media screen and (max-width: 1000px) {
-    display: block;
+  &:hover {
+    background-color: ${mainStyle.pointColor.green};
+    border: 1px solid ${mainStyle.pointColor.green};
+    opacity: 1;
   }
+`;
+const Trailer = styled.div`
+  width: 80px;
+  height: 40px;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  z-index: 9998;
+  cursor: pointer;
+  margin-left: 20px;
+
+  transition: 0.3s;
+  opacity: 0.8;
+  &:hover {
+    background-color: ${mainStyle.pointColor.green};
+    border: 1px solid ${mainStyle.pointColor.green};
+    opacity: 1;
+  }
+
   @media screen and (max-width: 500px) {
     padding: 5px 15px;
     bottom: 10px;
     right: 20px;
   }
 `;
-const RightCon = styled.div`
-  max-width: 400px;
-  padding-top: 50px;
+const Overview = styled.div`
+  max-width: 500px;
+  padding-top: 30px;
   letter-spacing: 0px;
   line-height: 24px;
   display: flex;
   flex-direction: column;
   p {
+    width: 100%;
+    height: 100%;
     font-size: 16px;
+    word-break: normal;
     color: ${mainStyle.color.sub};
+    background: linear-gradient(
+      to bottom,
+
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.3)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   @media screen and (max-width: 1000px) {
     display: none;
@@ -201,15 +219,9 @@ const RightCon = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  position: relative;
-  top: -250px;
-  left: 0;
+  transform: translateY(-150px);
   @media screen and (max-width: 1000px) {
-    position: static;
-    top: 0;
-    left: 0;
-    margin-top: 30px;
+    transform: translateY(-45px);
   }
 `;
 const MenuBox = styled.ul`
@@ -218,7 +230,7 @@ const MenuBox = styled.ul`
   justify-content: space-between;
   padding: 10px;
   width: 500px;
-  margin-right: 100px;
+  /* margin-left: 100px; */
   @media screen and (max-width: 500px) {
     width: 100%;
   }
@@ -228,16 +240,19 @@ const MenuBox = styled.ul`
 `;
 const Menu = styled.li`
   font-size: 24px;
-  color: ${mainStyle.color.p};
   cursor: pointer;
   &:hover {
     color: ${mainStyle.color.main};
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 18px;
   }
 `;
 
 const MWrap = styled.div`
   width: 100%;
   height: 400px;
+  background-color: rgba(0, 0, 0, 0.3);
   overflow: hidden;
 `;
 const Mlist = styled.div`
@@ -247,11 +262,9 @@ const ConWrap = styled.div`
   transition: 0.5s;
   height: 350px;
   cursor: pointer;
-  margin-top: 50px;
+  margin-top: 20px;
   &:hover {
-    transform-origin: bottom;
     height: 400px;
-    margin-top: 0;
   }
   @media screen and (max-width: 500px) {
     &:hover {
@@ -270,7 +283,7 @@ const MTitle = styled.div`
 `;
 const Popup = styled.div`
   width: 90vw;
-  height: 85vh;
+  height: 75vh;
   position: fixed;
   top: 120px;
   left: 5vw;
@@ -301,6 +314,9 @@ export const TDetailBg = ({ db, db2, db3 }) => {
   const [bgId, setBgid] = useState("68398");
   const [videosDb, setVideoDb] = useState();
   const [popup, setPopup] = useState("none");
+  const [latemenu, setLatemenu] = useState(`${mainStyle.color.main}`);
+  const [popmenu, setPopmenu] = useState(`${mainStyle.color.p}`);
+  const [highmenu, setHighmenu] = useState(`${mainStyle.color.p}`);
 
   const params = {
     breakpoints: {
@@ -320,20 +336,20 @@ export const TDetailBg = ({ db, db2, db3 }) => {
   };
 
   useEffect(() => {
-    const tvDetail = async () => {
+    const movieDetail = async () => {
       try {
         const { data } = await tvApi.tDetail(`${bgId}`);
         setDetailDb(data);
         const {
           data: { results },
         } = await tvApi.tVideo(`${bgId}`);
-        setVideoDb(results.length === 0 ? false : results[0].key);
+        setVideoDb(results.length === 0 ? true : results[0].key);
         setLoading(false);
       } catch (error) {
         console.log(error);
       }
     };
-    tvDetail();
+    movieDetail();
   }, []);
 
   return (
@@ -351,6 +367,9 @@ export const TDetailBg = ({ db, db2, db3 }) => {
               <ConWrap1>
                 <LeftCon>
                   <Title>{detailDb.name}</Title>
+                  <Overview>
+                    <p>{detailDb.overview.slice(0, 110)} . . .</p>
+                  </Overview>
                   <PointWrap>
                     <StarBox point={detailDb.vote_average}>
                       <StarWrap point={detailDb.vote_average}>
@@ -369,9 +388,10 @@ export const TDetailBg = ({ db, db2, db3 }) => {
                     ))}
                   </Genres>
                   <PlayWrap>
-                    <Play>
-                      <FontAwesomeIcon icon={faPlay} />
-                    </Play>
+                    <More>
+                      <Link to={`/tsubpage/${detailDb.id}`}>더보기 +</Link>
+                    </More>
+
                     <Trailer
                       onClick={() => {
                         setPopup("block");
@@ -381,37 +401,43 @@ export const TDetailBg = ({ db, db2, db3 }) => {
                     </Trailer>
                   </PlayWrap>
                 </LeftCon>
-                <RightCon>
-                  <p>{detailDb.overview}</p>
-                </RightCon>
               </ConWrap1>
             </Bg>
-            <MoNav>
-              <Link to={`/tsubpage/${detailDb.id}`}>More +</Link>
-            </MoNav>
           </Wrap>
           <Container>
             <MenuBox>
               <Menu
                 onClick={() => {
                   setMenu("0");
+                  setLatemenu(`${mainStyle.color.main}`);
+                  setHighmenu(`${mainStyle.color.p}`);
+                  setPopmenu(`${mainStyle.color.p}`);
                 }}
+                style={{ color: `${latemenu}` }}
               >
-                인기방송
+                최신영화
               </Menu>
               <Menu
                 onClick={() => {
                   setMenu("-400px");
+                  setLatemenu(`${mainStyle.color.p}`);
+                  setHighmenu(`${mainStyle.color.p}`);
+                  setPopmenu(`${mainStyle.color.main}`);
                 }}
+                style={{ color: `${popmenu}` }}
               >
-                추천방송
+                인기영화
               </Menu>
               <Menu
                 onClick={() => {
                   setMenu("-800px");
+                  setLatemenu(`${mainStyle.color.p}`);
+                  setHighmenu(`${mainStyle.color.main}`);
+                  setPopmenu(`${mainStyle.color.p}`);
                 }}
+                style={{ color: `${highmenu}` }}
               >
-                방영중
+                추천영화
               </Menu>
             </MenuBox>
             <MWrap>

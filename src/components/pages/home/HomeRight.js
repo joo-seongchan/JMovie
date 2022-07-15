@@ -7,7 +7,7 @@ import { mainStyle } from "../../../styles/globalStyle";
 
 const RightWrap = styled.div`
   width: 35vw;
-  min-width: 400px;
+  min-width: 300px;
   height: 100vh;
   @media screen and (max-width: 500px) {
     width: 100vw;
@@ -39,15 +39,18 @@ const MainMenuWrap = styled.div`
 const MainBox = styled.div`
   width: 50%;
   height: 100%;
-
-  background-color: ${mainStyle.pointColor.red};
-  border: 5px solid ${mainStyle.bgColor};
+  transition: 0.5s;
+  background-color: ${mainStyle.bgColor};
+  border: 3px solid ${mainStyle.pointColor.red};
+  transform: scale(0.95);
   &:nth-child(2) {
-    background-color: ${mainStyle.pointColor.green};
+    border: 3px solid ${mainStyle.pointColor.green};
   }
+
   span {
     font-size: 16px;
     margin-top: 10px;
+    transition: 0.5s;
   }
   a {
     width: 100%;
@@ -58,10 +61,31 @@ const MainBox = styled.div`
     flex-direction: column;
     letter-spacing: -1px;
     font-size: 36px;
-    font-weight: 400;
+    font-weight: 700;
     line-height: 35px;
+    transition: 0.5s;
     @media screen and (max-width: 1000px) {
       font-size: 28px;
+    }
+  }
+  &:hover {
+    background-color: ${mainStyle.pointColor.red};
+    transform: scale(1);
+    span {
+      font-size: 18px;
+      text-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+    a {
+      font-size: 38px;
+      text-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+
+    &:nth-child(2) {
+      background-color: ${mainStyle.pointColor.green};
     }
   }
 `;
@@ -70,36 +94,49 @@ const SubMenuWrap = styled.div`
   width: 100%;
   height: 25%;
   display: flex;
-  margin-top: 5px;
   a {
     width: 25%;
     height: 100%;
     display: block;
     &:nth-child(1) {
       div {
-        background-color: ${mainStyle.pointColor.red};
+        border: 3px solid ${mainStyle.pointColor.red};
+        &:hover {
+          background-color: ${mainStyle.pointColor.red};
+        }
       }
     }
     &:nth-child(2) {
       div {
-        background-color: ${mainStyle.pointColor.red};
+        border: 3px solid ${mainStyle.pointColor.red};
+        &:hover {
+          background-color: ${mainStyle.pointColor.red};
+        }
       }
     }
   }
 `;
 
 const SubMenu = styled.div`
+  transform: scale(0.9);
+  transition: 0.5s;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${mainStyle.pointColor.green};
-  border: 5px solid ${mainStyle.bgColor};
+  border: 3px solid ${mainStyle.pointColor.green};
   flex-direction: column;
   font-size: 20px;
-  @media screen and (max-width: 500px) {
-    font-size: 18px;
+  @media screen and (max-width: 1000px) {
+    font-size: 14px;
+  }
+  &:hover {
+    transform: scale(1);
+    border: 3px solid ${mainStyle.bgColor};
+    background-color: ${mainStyle.pointColor.green};
+
+    font-size: 22px;
   }
 `;
 
@@ -113,7 +150,11 @@ const TitleMenuWrap = styled.div`
     height: 100%;
     &:nth-child(2) {
       div {
-        background-color: ${mainStyle.pointColor.green};
+        border: 3px solid ${mainStyle.pointColor.green};
+        &:hover {
+          border: 3px solid ${mainStyle.bgColor};
+          background-color: ${mainStyle.pointColor.green};
+        }
       }
     }
   }
@@ -121,12 +162,22 @@ const TitleMenuWrap = styled.div`
 const TitleMenu = styled.div`
   width: 100%;
   height: 100%;
+  transform: scale(0.95);
+  transition: 0.5s;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 28px;
-  border: 5px solid ${mainStyle.bgColor};
-  background-color: ${mainStyle.pointColor.red};
+  font-size: 26px;
+  border: 3px solid ${mainStyle.pointColor.red};
+  &:hover {
+    transform: scale(1);
+    border: 3px solid ${mainStyle.bgColor};
+    background-color: ${mainStyle.pointColor.red};
+    font-size: 28px;
+  }
+  @media screen and (max-width: 1000px) {
+    font-size: 18px;
+  }
 `;
 
 export const HomeRight = ({ img1, img2 }) => {

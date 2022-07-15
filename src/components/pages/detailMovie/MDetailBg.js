@@ -18,16 +18,16 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 const Section = styled.section`
-  height: 100vh;
+  height: 980px;
   position: relative;
-  @media screen and (max-width: 1000px) {
-    height: auto;
-  }
 `;
 const Wrap = styled.div`
-  width: 99vw;
-  height: 80vh;
+  width: 100%;
+  height: 70%;
   position: relative;
+  @media screen and (max-width: 1000px) {
+    height: 59.5%;
+  }
 `;
 const Bg = styled.div`
   width: 100%;
@@ -41,14 +41,24 @@ const ConWrap1 = styled.div`
   background: linear-gradient(
     to right,
     rgba(29, 29, 29, 1),
-    rgba(29, 29, 29, 0.7),
+    rgba(29, 29, 29, 0.8),
     rgba(29, 29, 29, 0),
-    rgba(29, 29, 29, 0.7)
+    rgba(29, 29, 29, 0.8)
   );
 
   @media screen and (max-width: 1000px) {
     padding: ${mainStyle.mopadding};
     padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(
+      to right,
+
+      rgba(29, 29, 29, 0.8),
+      rgba(29, 29, 29, 0),
+      rgba(29, 29, 29, 0.8)
+    );
   }
 `;
 
@@ -57,9 +67,7 @@ const LeftCon = styled.div`
   @media screen and (max-width: 1000px) {
     width: 100%;
     max-width: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+    padding-bottom: 40px;
   }
 `;
 const Title = styled.div`
@@ -71,15 +79,11 @@ const Title = styled.div`
   letter-spacing: 2px;
   line-height: 70px;
 
-  @media screen and (max-width: 1000px) {
-    height: auto;
-    padding-bottom: 50px;
-  }
   @media screen and (max-width: 500px) {
-    font-size: 40px;
+    font-size: 36px;
     line-height: 50px;
-    padding-bottom: 50px;
     width: 100%;
+    margin-bottom: 20px;
   }
 `;
 const PointWrap = styled.div`
@@ -133,16 +137,15 @@ const PlayWrap = styled.div`
   margin-top: 30px;
   display: flex;
   @media screen and (max-width: 1000px) {
-    margin-top: 10px;
+    margin-bottom: 30px;
   }
 `;
 const More = styled.div`
   width: 80px;
   height: 40px;
-
   z-index: 9998;
   border: 1px solid white;
-  transition: 0.5s;
+  transition: 0.3s;
   opacity: 0.8;
   a {
     width: 100%;
@@ -157,9 +160,6 @@ const More = styled.div`
     border: 1px solid rgba(187, 22, 55, 1);
     opacity: 1;
   }
-  @media screen and (max-width: 1000px) {
-    display: none;
-  }
 `;
 const Trailer = styled.div`
   width: 80px;
@@ -173,20 +173,14 @@ const Trailer = styled.div`
   cursor: pointer;
   margin-left: 20px;
 
-  transition: 0.5s;
+  transition: 0.3s;
   opacity: 0.8;
   &:hover {
     background-color: rgba(187, 22, 55, 1);
     border: 1px solid rgba(187, 22, 55, 1);
     opacity: 1;
   }
-  @media screen and (max-width: 1000px) {
-    display: none;
-  }
 
-  @media screen and (max-width: 1000px) {
-    display: block;
-  }
   @media screen and (max-width: 500px) {
     padding: 5px 15px;
     bottom: 10px;
@@ -212,6 +206,7 @@ const Overview = styled.div`
       rgba(255, 255, 255, 0.8),
       rgba(255, 255, 255, 0.3)
     );
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -223,15 +218,9 @@ const Overview = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  position: relative;
-  top: -250px;
-  left: 0;
+  transform: translateY(-150px);
   @media screen and (max-width: 1000px) {
-    position: static;
-    top: 0;
-    left: 0;
-    margin-top: 30px;
+    transform: translateY(-45px);
   }
 `;
 const MenuBox = styled.ul`
@@ -240,12 +229,8 @@ const MenuBox = styled.ul`
   justify-content: space-between;
   padding: 10px;
   width: 500px;
-  margin-right: 100px;
   @media screen and (max-width: 500px) {
     width: 100%;
-  }
-  @media screen and (max-width: 1000px) {
-    margin-right: 0;
   }
 `;
 const Menu = styled.li`
@@ -254,11 +239,15 @@ const Menu = styled.li`
   &:hover {
     color: ${mainStyle.color.main};
   }
+  @media screen and (max-width: 500px) {
+    font-size: 18px;
+  }
 `;
 
 const MWrap = styled.div`
   width: 100%;
   height: 400px;
+  background-color: rgba(0, 0, 0, 0.3);
   overflow: hidden;
 `;
 const Mlist = styled.div`
@@ -268,11 +257,9 @@ const ConWrap = styled.div`
   transition: 0.5s;
   height: 350px;
   cursor: pointer;
-  margin-top: 50px;
+  margin-top: 20px;
   &:hover {
-    transform-origin: bottom;
     height: 400px;
-    margin-top: 0;
   }
   @media screen and (max-width: 500px) {
     &:hover {
@@ -333,7 +320,7 @@ export const MDetailBg = ({ db, db2, db3 }) => {
         spaceBetween: 10,
       },
       640: {
-        slidesPerView: 5.2,
+        slidesPerView: 4.2,
         spaceBetween: 25,
       },
       1080: {
@@ -376,7 +363,7 @@ export const MDetailBg = ({ db, db2, db3 }) => {
                 <LeftCon>
                   <Title>{detailDb.title}</Title>
                   <Overview>
-                    <p>{detailDb.overview.slice(0, 200)} . . .</p>
+                    <p>{detailDb.overview.slice(0, 110)} . . .</p>
                   </Overview>
                   <PointWrap>
                     <StarBox point={detailDb.vote_average}>
