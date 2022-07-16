@@ -214,7 +214,6 @@ export const TSubPage = () => {
   const [popup, setPopup] = useState("none");
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
-
   useEffect(() => {
     const detaildb = async () => {
       try {
@@ -315,9 +314,9 @@ export const TSubPage = () => {
               ></div>
             )}
           </Popup>
+          <TEpisodeGroup id={id} detailDb={detailDb} />
         </>
       )}
-      <TEpisodeGroup />
     </>
   );
 };

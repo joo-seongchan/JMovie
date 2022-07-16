@@ -30,7 +30,7 @@ export const tvApi = {
   tOnTheAir: () => api.get("tv/airing_today"),
   tDetail: (id) => api.get(`tv/${id}`),
   tVideo: (id) => api.get(`tv/${id}/videos`),
-  tSeason: (tvid, id) => api.get(`tv/${tvid}/season/${id}`),
+  tSeason: (tvid, num) => api.get(`tv/${tvid}/season/${num}`),
   tEpisodeGroups: (id) => api.get(`tv/${id}/episode_groups`),
   search: (term) =>
     api.get("search/tv", {
