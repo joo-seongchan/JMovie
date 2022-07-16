@@ -9,6 +9,7 @@ import { faPlay, faStar, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { mainStyle } from "../../../styles/globalStyle";
 import { PageTitle } from "../../PageTitle";
 import { ScrollTop } from "../../../ScrollTop";
+import { TEpisodeGroup } from "./TEpisodeGroup";
 
 const Bg = styled.div`
   width: 100vw;
@@ -316,6 +317,7 @@ export const TSubPage = () => {
           </Popup>
         </>
       )}
+      <TEpisodeGroup />
     </>
   );
 };

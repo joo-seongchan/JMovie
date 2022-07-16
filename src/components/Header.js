@@ -57,6 +57,10 @@ const Menu = styled.li`
 const Icon = styled.div`
   font-size: 22px;
   a {
+    margin-left: 50px;
+    &:first-child {
+      margin-left: 0;
+    }
     &:hover {
       color: ${mainStyle.pointColor.red};
     }
@@ -99,7 +103,7 @@ const MoCloseIcon = styled.div`
 
 const MoMenu = styled.li`
   width: 90%;
-  height: 20%;
+  height: 18%;
   font-size: 32px;
   border: 1px solid ${mainStyle.pointColor.red};
   a {
@@ -117,26 +121,27 @@ export const Header = () => {
     <SHeader>
       <Wrap>
         <Logo>
-          <Link to={"/"}>J Movie</Link>
+          <Link to={"/"}>J MOVIE</Link>
         </Logo>
         <MenuWrap>
           <Menu>
-            <Link to={"/"}>Home</Link>
+            <Link to={"/"}>HOME</Link>
           </Menu>
           <Menu>
-            <Link to={"/detailMovie"}>Movies</Link>
+            <Link to={"/detailMovie"}>MOVIES</Link>
           </Menu>
           <Menu>
-            <Link to={"/detailTv"}>TV Shows</Link>
+            <Link to={"/detailTv"}>TV SHOWS</Link>
           </Menu>
           <Menu>
-            <Link to={"/upComming"}>Up Comming</Link>
+            <Link to={"/upComming"}>UP COMMING</Link>
           </Menu>
         </MenuWrap>
         <Icon>
           <Link to={"/search"}>
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </Link>
+          <Link to={"/login"}>Login</Link>
         </Icon>
         <MoMenuWrap>
           <MOIcon
@@ -181,6 +186,13 @@ export const Header = () => {
               }}
             >
               <Link to={"/search"}>Search</Link>
+            </MoMenu>
+            <MoMenu
+              onClick={() => {
+                setMomenu("none");
+              }}
+            >
+              <Link to={"/login"}>Login</Link>
             </MoMenu>
           </MoMenus>
         </MoMenuWrap>
