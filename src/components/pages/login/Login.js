@@ -117,7 +117,7 @@ export const Login = () => {
     }
     if (dbUsername === dbUsername && password === dbPw) {
       // alert("로그인되었습니다.");
-      window.location.replace("http://localhost:3000/JMovie?#/");
+      window.location.replace("https://joo-seongchan.github.io/JMovie/#/");
     }
   };
 
