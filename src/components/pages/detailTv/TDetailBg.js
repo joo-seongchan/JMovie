@@ -257,24 +257,20 @@ const MWrap = styled.div`
 `;
 const Mlist = styled.div`
   height: 400px;
+  transition: 0.5s;
 `;
 const ConWrap = styled.div`
-  transition: 0.5s;
   height: 350px;
   cursor: pointer;
   margin-top: 20px;
-  &:hover {
-    height: 400px;
-  }
-  @media screen and (max-width: 500px) {
-    &:hover {
-      height: 400px;
-    }
-  }
 `;
 const MImg = styled.div`
   width: 100%;
   height: 80%;
+  transition: 0.5s;
+  &:hover {
+    height: 90%;
+  }
 `;
 const MTitle = styled.div`
   margin-top: 10px;
@@ -290,6 +286,9 @@ const Popup = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
   z-index: 9999;
+  @media screen and (max-width: 1000px) {
+    top: 60px;
+  }
 `;
 
 const Button = styled.div`
@@ -311,7 +310,7 @@ export const TDetailBg = ({ db, db2, db3 }) => {
   const [detailDb, setDetailDb] = useState();
   const [loading, setLoading] = useState(true);
   const [menu, setMenu] = useState("0px");
-  const [bgId, setBgid] = useState("68398");
+  const [bgId, setBgid] = useState("37854");
   const [videosDb, setVideoDb] = useState();
   const [popup, setPopup] = useState("none");
   const [latemenu, setLatemenu] = useState(`${mainStyle.color.main}`);
@@ -343,7 +342,7 @@ export const TDetailBg = ({ db, db2, db3 }) => {
         const {
           data: { results },
         } = await tvApi.tVideo(`${bgId}`);
-        setVideoDb(results.length === 0 ? true : results[0].key);
+        setVideoDb(results.length === 0 ? false : results[0].key);
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -361,7 +360,11 @@ export const TDetailBg = ({ db, db2, db3 }) => {
           <Wrap>
             <Bg
               style={{
-                background: `URL(${imgUrl}${detailDb.backdrop_path}) no-repeat center/cover`,
+                background: `URL(${
+                  detailDb.backdrop_path
+                    ? `${imgUrl}${detailDb.backdrop_path}`
+                    : "https://www.airi-ip.com/en/wp-content/themes/dp-fancie-note-business/img/post_thumbnail/noimage.png"
+                }) no-repeat center/cover`,
               }}
             >
               <ConWrap1>

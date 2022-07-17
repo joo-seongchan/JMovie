@@ -13,6 +13,9 @@ import { PageTitle } from "../../PageTitle";
 const Container = styled.div`
   padding: 0 100px;
   min-height: 90vh;
+  form {
+    margin-bottom: 50px;
+  }
   @media screen and (max-width: 1000px) {
     padding: ${mainStyle.mopadding};
   }
@@ -37,7 +40,7 @@ const Input = styled.input`
   font-size: 20px;
   border-radius: 50px;
   margin: 100px 0;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   &::placeholder {
     font-size: 22px;
   }
@@ -45,9 +48,14 @@ const Input = styled.input`
     margin: 50px 0;
   }
 `;
+const SearchErrors = styled.div`
+  font-size: 18px;
+  margin-left: 20px;
+  color: ${mainStyle.color.sub};
+`;
 
 const MainTitle = styled.div`
-  width: 50%;
+  width: 100%;
   font-size: 36px;
   padding-left: 15px;
   margin: 30px 0;
@@ -109,10 +117,18 @@ const ConTitle = styled.div`
   margin-top: 10px;
   text-align: center;
 `;
-const MError = styled.div`
-  font-size: 48px;
-  @media screen and (max-width: 500px) {
-    display: none;
+const Merror = styled.div`
+  width: 200%;
+  font-size: 36px;
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+  }
+`;
+const Terrors = styled.div`
+  width: 200%;
+  font-size: 36px;
+  @media screen and (max-width: 1000px) {
+    width: 100%;
   }
 `;
 
@@ -137,30 +153,30 @@ export const Search = () => {
     setLoading(true);
     setTitleloading(true);
     try {
+      setMsearchterm(null);
       const {
         data: { results: mdata },
       } = await movieApi.search(term);
 
       if (mdata.length <= 0) {
-        setError("result", {
-          massage: "영화가 없어요...!",
+        setError("mresult", {
+          message: "영화가 없어요...!",
         });
       } else {
         setMsearchterm(mdata);
       }
-
+      setTsearchterm(null);
       const {
         data: { results: tdata },
       } = await tvApi.search(term);
 
       if (tdata.length <= 0) {
-        setError("result", {
-          massage: "TV Show가 없어요...!",
+        setError("tresult", {
+          message: "TV Show가 없어요...!",
         });
       } else {
         setTsearchterm(tdata);
       }
-      console.log(msearchterm);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -177,13 +193,15 @@ export const Search = () => {
           {...register("search", {
             required: "내용은 필수 입니다.",
             onChange() {
-              clearErrors("result");
+              clearErrors();
             },
           })}
           type="text"
           placeholder="영화 검색..."
         />
+        <SearchErrors>{errors?.search?.message}</SearchErrors>
       </form>
+      {console.log(errors)}
       {loading ? (
         <Loading />
       ) : (
@@ -193,31 +211,27 @@ export const Search = () => {
               {titleloading ? <MainTitle>Movies</MainTitle> : ""}
 
               <Wrap>
-                {msearchterm && (
+                {msearchterm ? (
                   <>
-                    {msearchterm.length <= 0 ? (
-                      <MError>검색된 영화가 없습니다.</MError>
-                    ) : (
-                      <>
-                        {msearchterm.map((term) => (
-                          <Con key={term.id}>
-                            <Link to={`/msubpage/${term.id}`}>
-                              <Bg
-                                style={{
-                                  background: `url(${
-                                    term.poster_path
-                                      ? `${imgUrl}${term.poster_path}`
-                                      : "https://www.airi-ip.com/en/wp-content/themes/dp-fancie-note-business/img/post_thumbnail/noimage.png"
-                                  }) no-repeat center/cover `,
-                                }}
-                              />
-                              <ConTitle>{term.title}</ConTitle>
-                            </Link>
-                          </Con>
-                        ))}
-                      </>
-                    )}
+                    {msearchterm.map((term) => (
+                      <Con key={term.id}>
+                        <Link to={`/msubpage/${term.id}`}>
+                          <Bg
+                            style={{
+                              background: `url(${
+                                term.poster_path
+                                  ? `${imgUrl}${term.poster_path}`
+                                  : "https://www.airi-ip.com/en/wp-content/themes/dp-fancie-note-business/img/post_thumbnail/noimage.png"
+                              }) no-repeat center/cover `,
+                            }}
+                          />
+                          <ConTitle>{term.title}</ConTitle>
+                        </Link>
+                      </Con>
+                    ))}
                   </>
+                ) : (
+                  <Merror>{errors?.mresult?.message}</Merror>
                 )}
               </Wrap>
             </Container2>
@@ -230,31 +244,27 @@ export const Search = () => {
                 ""
               )}
               <Wrap>
-                {tsearchterm && (
+                {tsearchterm ? (
                   <>
-                    {tsearchterm.length <= 0 ? (
-                      <MError>검색 된 TV Show가 없습니다.</MError>
-                    ) : (
-                      <>
-                        {tsearchterm.map((term) => (
-                          <Con key={term.id}>
-                            <Link to={`/tsubpage/${term.id}`}>
-                              <Bg
-                                style={{
-                                  background: `url(${
-                                    term.poster_path
-                                      ? `${imgUrl}${term.poster_path}`
-                                      : "https://www.airi-ip.com/en/wp-content/themes/dp-fancie-note-business/img/post_thumbnail/noimage.png"
-                                  }) no-repeat center/cover `,
-                                }}
-                              />
-                              <ConTitle>{term.name}</ConTitle>
-                            </Link>
-                          </Con>
-                        ))}
-                      </>
-                    )}
+                    {tsearchterm.map((term) => (
+                      <Con key={term.id}>
+                        <Link to={`/tsubpage/${term.id}`}>
+                          <Bg
+                            style={{
+                              background: `url(${
+                                term.poster_path
+                                  ? `${imgUrl}${term.poster_path}`
+                                  : "https://www.airi-ip.com/en/wp-content/themes/dp-fancie-note-business/img/post_thumbnail/noimage.png"
+                              }) no-repeat center/cover `,
+                            }}
+                          />
+                          <ConTitle>{term.name}</ConTitle>
+                        </Link>
+                      </Con>
+                    ))}
                   </>
+                ) : (
+                  <Terrors>{errors?.tresult?.message}</Terrors>
                 )}
               </Wrap>
             </Container2>

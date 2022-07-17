@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { movieApi } from "../../../api";
 import { Loading } from "../../Loading";
@@ -193,9 +193,9 @@ const Popup = styled.div`
   left: 5vw;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
+  z-index: 9999;
   @media screen and (max-width: 1000px) {
-    left: 5vw;
-    height: 50vh;
+    top: 60px;
   }
 `;
 
@@ -214,10 +214,62 @@ const Button = styled.div`
   justify-content: center;
 `;
 
+const PlayPopUp = styled.div`
+  width: 90vw;
+  height: 75vh;
+  position: fixed;
+  top: 120px;
+  left: 5vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 9999;
+  @media screen and (max-width: 1000px) {
+    top: 60px;
+  }
+`;
+const PlayTextWrap = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+`;
+const PlayTitle = styled.div`
+  font-size: 70px;
+  margin-bottom: 100px;
+  @media screen and (max-width: 1000px) {
+    font-size: 40px;
+    margin-bottom: 50px;
+  }
+`;
+const LoginBox = styled.div`
+  width: 200px;
+  height: 100px;
+  background-color: ${mainStyle.pointColor.red};
+  a {
+    width: 100%;
+    height: 100%;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @media screen and (max-width: 1000px) {
+    width: 100px;
+    height: 50px;
+    a {
+      font-size: 24px;
+    }
+  }
+`;
+
 export const MSubPage = () => {
   const [detailDb, setDtaildb] = useState();
   const [videosDb, setVideoDb] = useState();
   const [popup, setPopup] = useState("none");
+  const [playpopup, setPlaypopup] = useState("none");
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
 
@@ -283,7 +335,11 @@ export const MSubPage = () => {
                 ))}
               </Genres>
               <BoxWrap>
-                <Play>
+                <Play
+                  onClick={() => {
+                    setPlaypopup(`block`);
+                  }}
+                >
                   <FontAwesomeIcon icon={faPlay} />
                 </Play>
                 <Trailer
@@ -322,6 +378,21 @@ export const MSubPage = () => {
               ></div>
             )}
           </Popup>
+          <PlayPopUp style={{ display: `${playpopup}` }}>
+            <Button
+              onClick={() => {
+                setPlaypopup("none");
+              }}
+            >
+              <FontAwesomeIcon icon={faXmark} />
+            </Button>
+            <PlayTextWrap>
+              <PlayTitle>로그인 후 이용해주세요</PlayTitle>
+              <LoginBox>
+                <Link to="/login">로그인</Link>
+              </LoginBox>
+            </PlayTextWrap>
+          </PlayPopUp>
         </>
       )}
     </>

@@ -187,9 +187,9 @@ const Popup = styled.div`
   left: 5vw;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
+  z-index: 9999;
   @media screen and (max-width: 1000px) {
-    left: 5vw;
-    height: 50vh;
+    top: 60px;
   }
 `;
 
@@ -208,12 +208,15 @@ const Button = styled.div`
   justify-content: center;
 `;
 
+const TEpisodeGroupWrap = styled.div``;
+
 export const TSubPage = () => {
   const [detailDb, setDtaildb] = useState();
   const [videosDb, setVideoDb] = useState();
   const [popup, setPopup] = useState("none");
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
+
   useEffect(() => {
     const detaildb = async () => {
       try {
@@ -230,6 +233,16 @@ export const TSubPage = () => {
     };
     detaildb();
   }, []);
+
+  const handlePlayClick = () => {
+    const seasontitle = document.querySelector(".seasontitle");
+    const seasontitleplace = seasontitle.offsetTop;
+    window.scrollTo({
+      top: seasontitleplace * 0.9,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <>
       <PageTitle title={"Movie Detail"} />
@@ -275,7 +288,7 @@ export const TSubPage = () => {
                 ))}
               </Genres>
               <BoxWrap>
-                <Play>
+                <Play onClick={handlePlayClick}>
                   <FontAwesomeIcon icon={faPlay} />
                 </Play>
                 <Trailer
@@ -314,7 +327,9 @@ export const TSubPage = () => {
               ></div>
             )}
           </Popup>
-          <TEpisodeGroup id={id} detailDb={detailDb} />
+          <TEpisodeGroupWrap className="seasontitle">
+            <TEpisodeGroup id={id} detailDb={detailDb} />
+          </TEpisodeGroupWrap>
         </>
       )}
     </>

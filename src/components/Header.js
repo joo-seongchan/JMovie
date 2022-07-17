@@ -38,7 +38,7 @@ const Logo = styled.h1`
 `;
 const MenuWrap = styled.ul`
   display: flex;
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1080px) {
     display: none;
   }
 `;
@@ -65,14 +65,14 @@ const Icon = styled.div`
       color: ${mainStyle.pointColor.red};
     }
   }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1080px) {
     display: none;
   }
 `;
 
 const MoMenuWrap = styled.div`
   display: none;
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1080px) {
     display: block;
   }
 `;
@@ -103,7 +103,7 @@ const MoCloseIcon = styled.div`
 
 const MoMenu = styled.li`
   width: 90%;
-  height: 18%;
+  height: 15%;
   font-size: 32px;
   border: 1px solid ${mainStyle.pointColor.red};
   a {

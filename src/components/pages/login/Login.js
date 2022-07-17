@@ -10,11 +10,12 @@ const userDb = {
 
 const Section = styled.section`
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 100px 0;
 `;
 const Title = styled.h1`
   font-size: 80px;
