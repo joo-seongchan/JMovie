@@ -63,7 +63,6 @@ const MTitle = styled.div`
 export const DetailMlist = ({ db, db2, db3 }) => {
   const [menu, setMenu] = useState("0px");
   const [bgId, setBgid] = useState("");
-  console.log(bgId);
   const params = {
     breakpoints: {
       320: {

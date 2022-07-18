@@ -204,7 +204,6 @@ export const Search = () => {
           {errors?.tresult?.message}
         </SearchErrors>
       </form>
-      {console.log(errors)}
       {loading ? (
         <Loading />
       ) : (

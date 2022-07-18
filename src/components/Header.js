@@ -8,7 +8,6 @@ import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mainStyle } from "../styles/globalStyle";
-import { Logdata } from "./pages/login/Logdata";
 
 const SHeader = styled.div`
   width: 100%;

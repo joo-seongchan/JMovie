@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { Loading } from "../../Loading";
 import { PageTitle } from "../../PageTitle";
 import { ScrollTop } from "../../../ScrollTop";
-import { AOS } from "aos";
 import "aos/dist/aos.css";
 
 const Title = styled.div`
@@ -18,7 +17,11 @@ const Title = styled.div`
   margin-top: 200px;
   color: ${mainStyle.color.main};
   @media screen and (max-width: 500px) {
-    font-size: 50px;
+    font-size: 38px;
+    margin-top: 100px;
+    text-align: left;
+    padding-left: 20px;
+    letter-spacing: 0;
   }
 `;
 const Container = styled.div`

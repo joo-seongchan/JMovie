@@ -33,7 +33,6 @@ export const DetailTv = () => {
     };
     movieData();
   }, []);
-  console.log(tPop);
   return (
     <>
       <PageTitle title={"TV Shows"} />
