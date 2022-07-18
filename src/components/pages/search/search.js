@@ -144,7 +144,7 @@ export const Search = () => {
     setError,
     clearErrors,
   } = useForm({
-    mode: "onSubmit",
+    mode: "onChange",
   });
 
   const searchData = async () => {
@@ -198,7 +198,11 @@ export const Search = () => {
           type="text"
           placeholder="영화 검색..."
         />
-        <SearchErrors>{errors?.search?.message}</SearchErrors>
+        <SearchErrors>
+          {errors?.search?.message}
+          {errors?.mresult?.message}
+          {errors?.tresult?.message}
+        </SearchErrors>
       </form>
       {console.log(errors)}
       {loading ? (
@@ -230,7 +234,7 @@ export const Search = () => {
                     ))}
                   </>
                 ) : (
-                  <Merror>{errors?.mresult?.message}</Merror>
+                  <Merror>영화가 없어요...!</Merror>
                 )}
               </Wrap>
             </Container2>
@@ -263,7 +267,7 @@ export const Search = () => {
                     ))}
                   </>
                 ) : (
-                  <Terrors>{errors?.tresult?.message}</Terrors>
+                  <Terrors>TV Show가 없어요...!</Terrors>
                 )}
               </Wrap>
             </Container2>

@@ -8,6 +8,7 @@ import { Loading } from "../../Loading";
 import { PageTitle } from "../../PageTitle";
 import { ScrollTop } from "../../../ScrollTop";
 import { AOS } from "aos";
+import "aos/dist/aos.css";
 
 const Title = styled.div`
   text-align: center;
@@ -72,14 +73,12 @@ export const UpComming = () => {
         } = await movieApi.mUpComming();
         setUpComming(results);
         setLoading(false);
-        AOS.init();
       } catch (error) {
         console.log(error);
       }
     };
     movieDetail();
   }, []);
-  console.log(upComming);
   return (
     <>
       <PageTitle title={"Up Comming"} />
@@ -88,21 +87,25 @@ export const UpComming = () => {
         <Loading />
       ) : (
         <>
-          <Title>개봉예정영화</Title>
-          <Container>
-            {upComming.map((data) => (
-              <ConWrap data-aos="fade-up">
-                <Link to={`/msubpage/${data.id}`}>
-                  <Img
-                    style={{
-                      background: `url( ${imgUrl}${data.poster_path} ) no-repeat center/cover`,
-                    }}
-                  />
-                  <ConTitle>{data.title}</ConTitle>
-                </Link>
-              </ConWrap>
-            ))}
-          </Container>
+          {upComming && (
+            <>
+              <Title>개봉예정영화</Title>
+              <Container>
+                {upComming.map((data) => (
+                  <ConWrap key={data.id}>
+                    <Link to={`/msubpage/${data.id}`}>
+                      <Img
+                        style={{
+                          background: `url( ${imgUrl}${data.poster_path} ) no-repeat center/cover`,
+                        }}
+                      />
+                      <ConTitle>{data.title}</ConTitle>
+                    </Link>
+                  </ConWrap>
+                ))}
+              </Container>
+            </>
+          )}
         </>
       )}
     </>

@@ -308,7 +308,9 @@ export const TEpisodeGroup = ({ id, detailDb }) => {
                 ))}
               </SeasonWrap>
             </Swiper>
-            <EpTitle data-aos="fade-up">{seasonDetailDb.name}</EpTitle>
+            <EpTitle data-aos="fade-up" className="eptitle">
+              {seasonDetailDb.name}
+            </EpTitle>
             <EpWrap>
               {seasonDetailDb && (
                 <>
