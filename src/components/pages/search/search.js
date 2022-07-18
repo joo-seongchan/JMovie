@@ -234,7 +234,7 @@ export const Search = () => {
                     ))}
                   </>
                 ) : (
-                  <Merror>영화가 없어요...!</Merror>
+                  <>{titleloading ? <Merror>영화가 없어요...!</Merror> : ""}</>
                 )}
               </Wrap>
             </Container2>
@@ -267,7 +267,13 @@ export const Search = () => {
                     ))}
                   </>
                 ) : (
-                  <Terrors>TV Show가 없어요...!</Terrors>
+                  <>
+                    {titleloading ? (
+                      <Terrors>TV Show가 없어요...!</Terrors>
+                    ) : (
+                      ""
+                    )}
+                  </>
                 )}
               </Wrap>
             </Container2>
