@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { Loading } from "../../Loading";
 import { PageTitle } from "../../PageTitle";
 import { ScrollTop } from "../../../ScrollTop";
+import { AOS } from "aos";
 
 const Title = styled.div`
   text-align: center;
@@ -71,6 +72,7 @@ export const UpComming = () => {
         } = await movieApi.mUpComming();
         setUpComming(results);
         setLoading(false);
+        AOS.init();
       } catch (error) {
         console.log(error);
       }
@@ -89,7 +91,7 @@ export const UpComming = () => {
           <Title>개봉예정영화</Title>
           <Container>
             {upComming.map((data) => (
-              <ConWrap>
+              <ConWrap data-aos="fade-up">
                 <Link to={`/msubpage/${data.id}`}>
                   <Img
                     style={{

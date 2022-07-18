@@ -116,7 +116,6 @@ export const Login = () => {
       setError("passwordResult", { message: "비밀번호가 틀렸습니다." });
     }
     if (dbUsername === dbUsername && password === dbPw) {
-      // alert("로그인되었습니다.");
       window.location.replace("https://joo-seongchan.github.io/JMovie/#/");
     }
   };

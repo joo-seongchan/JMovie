@@ -319,10 +319,14 @@ export const MDetailBg = ({ db, db2, db3 }) => {
         spaceBetween: 10,
       },
       640: {
-        slidesPerView: 4.2,
+        slidesPerView: 3.2,
         spaceBetween: 25,
       },
       1080: {
+        slidesPerView: 6.2,
+        spaceBetween: 25,
+      },
+      1400: {
         slidesPerView: 8.2,
         spaceBetween: 25,
       },
@@ -451,6 +455,11 @@ export const MDetailBg = ({ db, db2, db3 }) => {
                             data: { results: b },
                           } = await movieApi.mVideo(db.id);
                           setVideoDb(b.length === 0 ? false : b[0].key);
+                          window.scrollTo({
+                            top: 0,
+                            left: 0,
+                            behavior: "smooth",
+                          });
                         }}
                       >
                         <MImg
@@ -477,6 +486,11 @@ export const MDetailBg = ({ db, db2, db3 }) => {
                             data: { results: b },
                           } = await movieApi.mVideo(db2.id);
                           setVideoDb(b.length === 0 ? false : b[0].key);
+                          window.scrollTo({
+                            top: 0,
+                            left: 0,
+                            behavior: "smooth",
+                          });
                         }}
                       >
                         <MImg
@@ -502,6 +516,11 @@ export const MDetailBg = ({ db, db2, db3 }) => {
                             data: { results: b },
                           } = await movieApi.mVideo(db3.id);
                           setVideoDb(b.length === 0 ? false : b[0].key);
+                          window.scrollTo({
+                            top: 0,
+                            left: 0,
+                            behavior: "smooth",
+                          });
                         }}
                       >
                         <MImg

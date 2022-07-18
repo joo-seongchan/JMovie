@@ -8,6 +8,7 @@ import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mainStyle } from "../styles/globalStyle";
+import { Logdata } from "./pages/login/Logdata";
 
 const SHeader = styled.div`
   width: 100%;
@@ -20,6 +21,7 @@ const SHeader = styled.div`
   z-index: 9999;
   @media screen and (max-width: 500px) {
     padding: ${mainStyle.mopadding};
+    height: 60px;
   }
 `;
 const Wrap = styled.div`
@@ -34,6 +36,11 @@ const Logo = styled.h1`
     color: ${mainStyle.pointColor.red};
     font-size: 28px;
     font-weight: 700;
+  }
+  @media screen and (max-width: 500px) {
+    a {
+      font-size: 24px;
+    }
   }
 `;
 const MenuWrap = styled.ul`
@@ -105,7 +112,6 @@ const MoMenu = styled.li`
   width: 90%;
   height: 15%;
   font-size: 32px;
-  border: 1px solid ${mainStyle.pointColor.red};
   a {
     display: flex;
     width: 100%;

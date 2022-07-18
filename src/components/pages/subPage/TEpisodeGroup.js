@@ -11,6 +11,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { mainStyle } from "../../../styles/globalStyle";
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Wrap = styled.div`
   padding: 50px 100px;
@@ -77,6 +79,13 @@ const Ep = styled.div`
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+  &:hover {
+    .img {
+      .imgcover {
+        opacity: 0.5;
+      }
+    }
+  }
   @media screen and (max-width: 500px) {
     display: block;
   }
@@ -103,9 +112,6 @@ const StilPathCover = styled.div`
   font-size: 70px;
   background-color: black;
   opacity: 0;
-  &:hover {
-    opacity: 0.5;
-  }
 `;
 const EpTextWrap = styled.div`
   width: 55%;
@@ -122,6 +128,7 @@ const EpConTitle = styled.div`
   font-weight: 500;
   @media screen and (max-width: 500px) {
     margin-bottom: 10px;
+    font-size: 18px;
   }
 `;
 const EpOverview = styled.div`
@@ -136,6 +143,9 @@ const EpOverview = styled.div`
 `;
 const AirDate = styled.div`
   color: ${mainStyle.color.p};
+  @media screen and (max-width: 500px) {
+    font-size: 14px;
+  }
 `;
 const Button = styled.div`
   font-size: 32px;
@@ -215,6 +225,7 @@ export const TEpisodeGroup = ({ id, detailDb }) => {
         const { data } = await tvApi.tSeason(id, seasonDb[0].season_number);
         setSeasonDetaildb(data);
         setLoading(false);
+        AOS.init();
       } catch (error) {
         console.log(error);
       }
@@ -238,6 +249,7 @@ export const TEpisodeGroup = ({ id, detailDb }) => {
       },
     },
   };
+
   return (
     <>
       {loading ? (
@@ -245,12 +257,13 @@ export const TEpisodeGroup = ({ id, detailDb }) => {
       ) : (
         <>
           <Wrap>
-            <SeasonTitle>Season</SeasonTitle>
+            <SeasonTitle data-aos="fade-up">Season</SeasonTitle>
             <Swiper modules={[Navigation]} {...params}>
               <SeasonWrap>
                 {seasonDb.map((data) => (
                   <SwiperSlide>
                     <Season
+                      data-aos="fade-up"
                       onClick={async () => {
                         const { data: a } = await tvApi.tSeason(
                           id,
@@ -295,17 +308,19 @@ export const TEpisodeGroup = ({ id, detailDb }) => {
                 ))}
               </SeasonWrap>
             </Swiper>
-            <EpTitle className="eptitle">{seasonDetailDb.name}</EpTitle>
+            <EpTitle data-aos="fade-up">{seasonDetailDb.name}</EpTitle>
             <EpWrap>
               {seasonDetailDb && (
                 <>
                   {seasonDetailDb.episodes.map((db) => (
                     <Ep
+                      data-aos="fade-up"
                       onClick={() => {
                         setPlaypopup("block");
                       }}
                     >
                       <StillPath
+                        className="img"
                         style={{
                           background: `url(${
                             db.still_path
@@ -318,7 +333,7 @@ export const TEpisodeGroup = ({ id, detailDb }) => {
                           }) no-repeat top/cover`,
                         }}
                       >
-                        <StilPathCover>
+                        <StilPathCover className="imgcover">
                           <FontAwesomeIcon icon={faPlay} />
                         </StilPathCover>
                       </StillPath>
