@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/JMovie/static/css/main.9bf80ff5.css",
-    "main.js": "/JMovie/static/js/main.23b3eb41.js",
+    "main.css": "/JMovie/static/css/main.8d06a2e4.css",
+    "main.js": "/JMovie/static/js/main.c9da6b20.js",
     "index.html": "/JMovie/index.html",
-    "main.9bf80ff5.css.map": "/JMovie/static/css/main.9bf80ff5.css.map",
-    "main.23b3eb41.js.map": "/JMovie/static/js/main.23b3eb41.js.map"
+    "main.8d06a2e4.css.map": "/JMovie/static/css/main.8d06a2e4.css.map",
+    "main.c9da6b20.js.map": "/JMovie/static/js/main.c9da6b20.js.map"
   },
   "entrypoints": [
-    "static/css/main.9bf80ff5.css",
-    "static/js/main.23b3eb41.js"
+    "static/css/main.8d06a2e4.css",
+    "static/js/main.c9da6b20.js"
   ]
 }
