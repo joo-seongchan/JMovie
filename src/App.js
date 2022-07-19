@@ -12,8 +12,7 @@ import { UpComming } from "./components/pages/upComming/UpComming";
 import { MSubPage } from "./components/pages/subPage/MSubPage";
 import { TSubPage } from "./components/pages/subPage/TSubPage";
 import { Login } from "./components/pages/login/Login";
-import { useState } from "react";
-import { SignUp } from "./components/pages/login/signUp/SignUP";
+import { SignUp } from "./components/pages/login/SignUp";
 
 function App() {
   return (
@@ -30,6 +29,7 @@ function App() {
           <Route path="/msubpage/:id" element={<MSubPage />}></Route>
           <Route path="/tsubpage/:id" element={<TSubPage />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="signup" element={<SignUp />}></Route>
           <Route path="/*" element={<NotFound />}></Route>
         </Routes>
         <Footer />

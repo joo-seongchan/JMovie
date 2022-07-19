@@ -2,11 +2,17 @@ import styled from "styled-components";
 import { mainStyle } from "../../../styles/globalStyle";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const userDb = {
   dbUsername: "test",
   dbPw: "123123123",
 };
+
+const Bg = styled.div`
+  background: url(https://image.tmdb.org/t/p/original//nNmJRkg8wWnRmzQDe2FwKbPIsJV.jpg)
+    center center / cover no-repeat;
+`;
 
 const Section = styled.section`
   width: 100vw;
@@ -16,6 +22,8 @@ const Section = styled.section`
   justify-content: center;
   align-items: center;
   padding: 100px 0;
+  background-color: rgba(29, 29, 29, 0.5);
+  backdrop-filter: blur(2px);
 `;
 const Title = styled.h1`
   font-size: 80px;
@@ -86,12 +94,30 @@ const Button = styled.button`
   color: white;
   border-radius: 10px;
   transition: 0.5s;
+  margin-bottom: 20px;
 `;
 const Errors = styled.div`
   width: 100%;
   margin-bottom: 15px;
   font-size: 14px;
   opacity: 0.8;
+`;
+
+const Signup = styled.div`
+  all: unset;
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+  color: white;
+  background-color: ${mainStyle.pointColor.green};
+  border-radius: 10px;
+  a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const Login = () => {
@@ -121,71 +147,78 @@ export const Login = () => {
   };
 
   return (
-    <Section>
-      <Title>J Movie</Title>
-      <LogWrap>
-        <SubTitle>Login</SubTitle>
-        <form onSubmit={handleSubmit(submit)}>
-          <input
-            {...register("username", {
-              required: "아이디는 필수 입니다.",
-              minLength: {
-                value: 3,
-                message: "아이디는 3자리 이상 작성해 주세요",
-              },
-              onChange() {
-                clearErrors("usernameResult");
-              },
-            })}
-            type="text"
-            placeholder="ID (test)"
-          />
-          {errors?.username?.message && (
-            <Errors>{errors?.username?.message} </Errors>
-          )}
-          {errors?.usernameResult?.message && (
-            <Errors>{errors?.usernameResult?.message} </Errors>
-          )}
-          <input
-            {...register("password", {
-              required: "패스워드는 필수입니다.",
-              minLength: {
-                value: 8,
-                message: "패스워드는 8자리 이상입니다.",
-              },
-              onChange() {
-                clearErrors("passwordResult");
-              },
-            })}
-            type={pwtype}
-            placeholder="Password (123123123)"
-          />
+    <Bg>
+      <Section>
+        <Title>J Movie</Title>
+        <LogWrap>
+          <SubTitle>Login</SubTitle>
+          <form onSubmit={handleSubmit(submit)}>
+            <input
+              {...register("username", {
+                required: "아이디는 필수 입니다.",
+                minLength: {
+                  value: 3,
+                  message: "아이디는 3자리 이상 작성해 주세요",
+                },
+                onChange() {
+                  clearErrors("usernameResult");
+                },
+              })}
+              type="text"
+              placeholder="ID (test)"
+            />
+            {errors?.username?.message && (
+              <Errors>{errors?.username?.message} </Errors>
+            )}
+            {errors?.usernameResult?.message && (
+              <Errors>{errors?.usernameResult?.message} </Errors>
+            )}
+            <input
+              {...register("password", {
+                required: "패스워드는 필수입니다.",
+                minLength: {
+                  value: 8,
+                  message: "패스워드는 8자리 이상입니다.",
+                },
+                onChange() {
+                  clearErrors("passwordResult");
+                },
+              })}
+              type={pwtype}
+              placeholder="Password (123123123)"
+            />
 
-          <ShowPassword
-            onClick={() => {
-              pwtype === "password" ? setPwtype("text") : setPwtype("password");
-            }}
-          >
-            비밀번호 보이기
-          </ShowPassword>
-          {errors?.password?.message && (
-            <Errors>{errors?.password?.message} </Errors>
-          )}
-          {errors?.passwordResult?.message && (
-            <Errors>{errors?.passwordResult?.message} </Errors>
-          )}
-          <Button
-            style={{
-              background: `${
-                isValid ? `${mainStyle.pointColor.green}` : "gray"
-              }`,
-              cursor: `${isValid ? "pointer" : "auto"}`,
-            }}
-          >
-            LOGIN
-          </Button>
-        </form>
-      </LogWrap>
-    </Section>
+            <ShowPassword
+              onClick={() => {
+                pwtype === "password"
+                  ? setPwtype("text")
+                  : setPwtype("password");
+              }}
+            >
+              비밀번호 보이기
+            </ShowPassword>
+            {errors?.password?.message && (
+              <Errors>{errors?.password?.message} </Errors>
+            )}
+            {errors?.passwordResult?.message && (
+              <Errors>{errors?.passwordResult?.message} </Errors>
+            )}
+            <Button
+              style={{
+                background: `${
+                  isValid ? `${mainStyle.pointColor.green}` : "gray"
+                }`,
+                cursor: `${isValid ? "pointer" : "auto"}`,
+              }}
+            >
+              LOGIN
+            </Button>
+            <Signup>
+              <Link to={"/signup"}>회원가입</Link>
+            </Signup>
+          </form>
+        </LogWrap>
+      </Section>
+    </Bg>
   );
 };
