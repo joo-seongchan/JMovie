@@ -1,35 +1,41 @@
-# MovieApp
+# J Movie Project
 
-# Todo
+본프로젝트는 joo-seongchan에의해 제작된 프로젝트입니다.
+프로젝트는 메인페이지, 영화, 드라마, 개봉예정영화, 서치, 영화서브페이지, 드라마서브페이지, 로그인 페이지로 구성됩니다.
 
-## Global
+###프레임워크
+\*React
 
-- [x] Package install
-- [x] Router setuP
-- [x] Create Components
-- [ ] Helmet
-- [x] Get Api
-- [ ] Header Responsive
-- [ ] Main Container Responsive
+###개요
+본 프로젝트는 TMDB에서 제공되는 API를 활용한 스트리밍 서비스를 제공하기위한 페이지를 작성한 것입니다.
 
-## Main page
+## 1. HOME
 
-- [x] Use Effect
-- [x] try catch
-- [ ] Loading
-- [ ] Slide
-- [ ] Slide Link
-- [ ] Slide Navigation
-- [ ] 404 Image
-- [ ] Header Event
+- 홈 페이지는 기존 다른 스트리밍 서비스 홈페이지가 홈 화면에서 모든 영화에대한 정보를 제공하여 고객의 동작을 죽일고 선택을 홈 화면에서 할 수 있도록 했다면 이와 다르게 인기작 2종(영화, 드라마, 총 4편)만 제공함으로써 선택의 시간을 줄여주기 위한 디자인을 계획 하였습니다. 단 1일 1회 이상의 업데이트를 통해 변화를 주어 지겨운 홈페이지가 아닌 추천받을 수 있는 페이지로 만들어야 할 것입니다.
 
-## Detail page
+## 2. MOVIES,TV SHOWS
 
-- [ ] Link
-- [ ] Responsive
-- [ ] scroll Error
-- [ ] Video
+- 최신,인기,추천의 분류를 통해 영화,드라마를 보여주는 페이지 입니다. 타 사이트에서 영화에 대한 정보를 얻기위해서 페이지이동을 해야한다는 불편함을 해소하고자 본 페이지에서 간략한 영화의 정보를 제공함으로써 페이지를 이동하는 소요는 줄이고 선택은 빨리 할 수 있도록 제작하였습니다.
 
-## Search page
+## 3. MOVIE, TV SHOW Subpage
 
-- [ ] Css Grid
+- 고객이 관람을 원하는 영화를 선택하였다면 본 페이지에서 영화에 대한 자세한 설명과 플레이 버튼을 통해 영화를 감상할 수 있습니다.
+
+- 드라마 같은경우 본 페이지에서 시진/에피소드를 선택하여 시청할 수 있습니다.
+
+## 4. UP COMMING
+
+- 스트리밍 예정작을 소개한 페이지입니다.
+
+## 5. SEARCH
+
+- 서치를 위한 페이지 입니다.
+- TMDB에서 제공하는 API를 기준으로 기능이 작동합니다.
+
+## 6. 로그인 페이지
+
+- 로그인을 위한 페이지 입니다.
+
+# 외보소스 정보
+
+- TMDB API
